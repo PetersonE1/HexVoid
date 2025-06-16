@@ -1,0 +1,16 @@
+{
+  name: "hexvoid.book.patterns.spells.dummy_spells",
+  category: "hexcasting:patterns/spells",
+  icon: "minecraft:spruce_sign",
+  advancement: "hexcasting:root",
+  pages: [
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexvoid:congratulate",
+      anchor: "hexvoid:congratulate",
+      input: "entity",
+      output: "",
+      text: "hexvoid.book.patterns.spells.dummy_spells.congratulate",
+    },
+  ],
+}

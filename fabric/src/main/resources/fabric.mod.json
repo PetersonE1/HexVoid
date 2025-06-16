@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "hexvoid",
+  "version": "${version}",
+  "name": "HexVoid",
+  "description": "An addon for Hex Casting adding interdimensional travel through a mysterious void realm.",
+  "authors": [
+    "PetersonE1"
+  ],
+  "contact": {
+    "homepage": "https://petersone1.github.io/HexVoid",
+    "sources": "https://github.com/PetersonE1/HexVoid"
+  },
+  "license": "MIT",
+  "icon": "assets/hexvoid/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [{
+      "adapter": "kotlin",
+      "value": "org.agent.hexvoid.fabric.FabricHexvoid"
+    }],
+    "client": [{
+      "adapter": "kotlin",
+      "value": "org.agent.hexvoid.fabric.FabricHexvoidClient"
+    }],
+    "modmenu": [{
+      "adapter": "kotlin",
+      "value": "org.agent.hexvoid.fabric.FabricHexvoidModMenu"
+    }]
+  },
+  "mixins": [
+    "hexvoid-common.mixins.json",
+    "hexvoid-fabric.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${versions.minecraft}",
+    "fabricloader": ">=${versions.fabric_loader}",
+    "fabric-api": ">=${versions.fabric_api}",
+    "fabric-language-kotlin": ">=${versions.kotlin_fabric}",
+    "architectury": ">=${versions.architectury}",
+    "hexcasting": ">=${versions.hexcasting_dependency}",
+    "cloth-config": ">=${versions.clothConfig}"
+  },
+  "suggests": {
+    "modmenu": ">=${versions.modMenu}"
+  }
+}

@@ -1,0 +1,21 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/updating/#never-change-the-answers-file-manually
+_commit: v2.0.2
+_src_path: gh:FallingColors/hexdummy
+advanced: true
+capitalize_platforms: false
+classname: Hexvoid
+default_branch: main
+description: An addon for Hex Casting adding interdimensional travel through a mysterious
+    void realm.
+display_name: HexVoid
+github_repo: HexVoid
+github_user: PetersonE1
+homepage_url: https://petersone1.github.io/HexVoid
+java_package: org.agent.hexvoid
+kotlin_package: org.agent.hexvoid
+mappings_name: Mojmap
+minecraft_version_in_mod_version: true
+mod_version: 0.1.0
+modid: hexvoid
+sources_url: https://github.com/PetersonE1/HexVoid
