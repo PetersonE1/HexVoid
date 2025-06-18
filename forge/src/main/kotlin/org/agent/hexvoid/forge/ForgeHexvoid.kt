@@ -7,6 +7,7 @@ import net.minecraft.data.DataProvider.Factory
 import net.minecraft.data.PackOutput
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
+import org.agent.hexvoid.forge.datagen.HexvoidWorldGenProvider
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
 @Mod(Hexvoid.MODID)
@@ -22,7 +23,7 @@ class HexvoidForge {
 
     private fun gatherData(event: GatherDataEvent) {
         event.apply {
-            // TODO: add datagen providers here
+            addProvider(includeServer()) { HexvoidWorldGenProvider(it, lookupProvider) }
         }
     }
 }
