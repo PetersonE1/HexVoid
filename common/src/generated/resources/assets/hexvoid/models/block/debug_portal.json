@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexvoid:block/debug_portal",
+    "east": "hexvoid:block/debug_portal",
+    "north": "hexvoid:block/debug_portal",
+    "particle": "hexvoid:block/debug_portal",
+    "south": "hexvoid:block/debug_portal",
+    "up": "hexvoid:block/debug_portal",
+    "west": "hexvoid:block/debug_portal"
+  }
+}

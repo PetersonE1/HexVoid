@@ -1,5 +1,5 @@
 {
-  "type": "hexvoid:hexvoiddim_type",
+  "type": "hexvoid:interstitia_type",
   "generator": {
     "type": "minecraft:noise",
     "biome_source": {

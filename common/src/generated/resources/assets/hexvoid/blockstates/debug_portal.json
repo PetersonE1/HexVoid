@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "hexvoid:block/debug_portal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "hexvoid:block/debug_portal"
+    },
+    "facing=south": {
+      "model": "hexvoid:block/debug_portal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "hexvoid:block/debug_portal",
+      "y": 270
+    }
+  }
+}

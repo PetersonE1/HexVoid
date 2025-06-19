@@ -6,6 +6,10 @@ import org.apache.logging.log4j.Logger
 import org.agent.hexvoid.config.HexvoidConfig
 import org.agent.hexvoid.networking.HexvoidNetworking
 import org.agent.hexvoid.registry.HexvoidActions
+import org.agent.hexvoid.registry.HexvoidBlocks
+import org.agent.hexvoid.registry.HexvoidCreativeTabs
+import org.agent.hexvoid.registry.HexvoidIotaTypes
+import org.agent.hexvoid.registry.HexvoidItems
 
 object Hexvoid {
     const val MODID = "hexvoid"
@@ -19,7 +23,11 @@ object Hexvoid {
     fun init() {
         HexvoidConfig.init()
         initRegistries(
+            HexvoidBlocks,
+            HexvoidItems,
+            HexvoidCreativeTabs,
             HexvoidActions,
+            HexvoidIotaTypes
         )
         HexvoidNetworking.init()
     }

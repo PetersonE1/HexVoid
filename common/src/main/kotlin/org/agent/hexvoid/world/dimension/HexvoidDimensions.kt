@@ -1,10 +1,7 @@
 package org.agent.hexvoid.world.dimension
 
 import com.mojang.datafixers.util.Pair
-import net.minecraft.core.Holder
-import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
-import net.minecraft.data.registries.VanillaRegistries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.Level
@@ -13,12 +10,9 @@ import net.minecraft.world.level.dimension.LevelStem
 import net.minecraft.data.worldgen.BootstapContext
 import net.minecraft.tags.BlockTags
 import net.minecraft.util.valueproviders.UniformInt
-import net.minecraft.world.level.biome.BiomeSource
-import net.minecraft.world.level.biome.BiomeSources
 import net.minecraft.world.level.biome.Biomes
 import net.minecraft.world.level.biome.Climate
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource
-import net.minecraft.world.level.chunk.ChunkGenerator
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings
@@ -27,16 +21,16 @@ import java.util.OptionalLong
 
 class HexvoidDimensions {
     companion object {
-        val HEXVOIDDIM_KEY: ResourceKey<LevelStem> = ResourceKey.create(Registries.LEVEL_STEM,
-            ResourceLocation(Hexvoid.MODID, "hexvoiddim"))
-        val HEXVOIDDIM_LEVEL_KEY: ResourceKey<Level> = ResourceKey.create(Registries.DIMENSION,
-            ResourceLocation(Hexvoid.MODID, "hexvoiddim"))
-        val HEXVOIDDIM_TYPE: ResourceKey<DimensionType> = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation(Hexvoid.MODID, "hexvoiddim_type"))
+        val INTERSTITIA_KEY: ResourceKey<LevelStem> = ResourceKey.create(Registries.LEVEL_STEM,
+            ResourceLocation(Hexvoid.MODID, "interstitia"))
+        val INTERSTITIA_LEVEL_KEY: ResourceKey<Level> = ResourceKey.create(Registries.DIMENSION,
+            ResourceLocation(Hexvoid.MODID, "interstitia"))
+        val INTERSTITIA_TYPE: ResourceKey<DimensionType> = ResourceKey.create(Registries.DIMENSION_TYPE,
+            ResourceLocation(Hexvoid.MODID, "interstitia_type"))
 
         @JvmStatic
         fun bootstrapType(context: BootstapContext<DimensionType>) {
-            context.register(HEXVOIDDIM_TYPE, DimensionType(
+            context.register(INTERSTITIA_TYPE, DimensionType(
                 OptionalLong.of(12000), // fixedTime
                 false, // hasSkylight
                 false, // hasCeiling
@@ -62,7 +56,7 @@ class HexvoidDimensions {
 
         @JvmStatic
         fun bootstrapLevelStem(context: BootstapContext<LevelStem>) {
-            context.register(HEXVOIDDIM_KEY, LevelStem(context.lookup(Registries.DIMENSION_TYPE).getOrThrow(HEXVOIDDIM_TYPE), NoiseBasedChunkGenerator(
+            context.register(INTERSTITIA_KEY, LevelStem(context.lookup(Registries.DIMENSION_TYPE).getOrThrow(INTERSTITIA_TYPE), NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(Climate.ParameterList(listOf(
                     Pair(
                         Climate.parameters(0.2f, 0.1f, 0.15f, 0.0f, -0.05f, 0.0f, 0.0f),
