@@ -1,0 +1,36 @@
+{
+  "type": "hexvoid:hexvoiddim_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "minecraft:plains",
+          "parameters": {
+            "continentalness": 0.15,
+            "depth": -0.05,
+            "erosion": 0.0,
+            "humidity": 0.1,
+            "offset": 0.0,
+            "temperature": 0.2,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "minecraft:ocean",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.15,
+            "weirdness": 0.0
+          }
+        }
+      ]
+    },
+    "settings": "minecraft:overworld"
+  }
+}
