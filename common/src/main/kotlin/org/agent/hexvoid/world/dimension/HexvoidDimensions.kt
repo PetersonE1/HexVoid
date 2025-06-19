@@ -1,7 +1,10 @@
 package org.agent.hexvoid.world.dimension
 
+import com.mojang.datafixers.util.Pair
 import net.minecraft.core.Holder
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.core.registries.Registries
+import net.minecraft.data.registries.VanillaRegistries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.Level
@@ -12,8 +15,13 @@ import net.minecraft.tags.BlockTags
 import net.minecraft.util.valueproviders.UniformInt
 import net.minecraft.world.level.biome.BiomeSource
 import net.minecraft.world.level.biome.BiomeSources
+import net.minecraft.world.level.biome.Biomes
+import net.minecraft.world.level.biome.Climate
+import net.minecraft.world.level.biome.MultiNoiseBiomeSource
 import net.minecraft.world.level.chunk.ChunkGenerator
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes
+import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator
+import net.minecraft.world.level.levelgen.NoiseGeneratorSettings
 import org.agent.hexvoid.Hexvoid
 import java.util.OptionalLong
 
@@ -37,9 +45,9 @@ class HexvoidDimensions {
                 1.0, // coordinateScale
                 false, // bedWorks
                 true, // respawnAnchorWorks
-                0, // minY
-                256, // height
-                256, // logicalHeight (portals can't spawn, and chorus fruit won't teleport above this height)
+                -64, // minY
+                320, // height
+                320, // logicalHeight (portals can't spawn, and chorus fruit won't teleport above this height)
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn (what blocks infinitely burn)
                 BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation (sky effects)
                 1.0f, // ambientLight
@@ -52,11 +60,20 @@ class HexvoidDimensions {
             ))
         }
 
-        /*@JvmStatic
+        @JvmStatic
         fun bootstrapLevelStem(context: BootstapContext<LevelStem>) {
-            context.register(HEXVOIDDIM_KEY, LevelStem(context.lookup(Registries.DIMENSION_TYPE).getOrThrow(HEXVOIDDIM_TYPE), ChunkGenerator(
-
+            context.register(HEXVOIDDIM_KEY, LevelStem(context.lookup(Registries.DIMENSION_TYPE).getOrThrow(HEXVOIDDIM_TYPE), NoiseBasedChunkGenerator(
+                MultiNoiseBiomeSource.createFromList(Climate.ParameterList(listOf(
+                    Pair(
+                        Climate.parameters(0.2f, 0.1f, 0.15f, 0.0f, -0.05f, 0.0f, 0.0f),
+                        context.lookup(Registries.BIOME).getOrThrow(Biomes.PLAINS)),
+                    Pair(
+                        Climate.parameters(0.15f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f),
+                        context.lookup(Registries.BIOME).getOrThrow(Biomes.OCEAN)
+                    )
+                ))),
+                context.lookup(Registries.NOISE_SETTINGS).getOrThrow(NoiseGeneratorSettings.OVERWORLD)
             )))
-        }*/
+        }
     }
 }

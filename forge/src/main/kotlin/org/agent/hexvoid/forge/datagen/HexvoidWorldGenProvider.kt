@@ -17,5 +17,6 @@ class HexvoidWorldGenProvider(
     companion object {
         val BUILDER: RegistrySetBuilder = RegistrySetBuilder()
             .add(Registries.DIMENSION_TYPE, HexvoidDimensions::bootstrapType)
+            .add(Registries.LEVEL_STEM, HexvoidDimensions::bootstrapLevelStem)
     }
 }
