@@ -1,8 +1,11 @@
 package org.agent.hexvoid.blocks.debug_portal
 
+import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.client.renderer.EffectInstance
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.core.GlobalPos
 import net.minecraft.core.Vec3i
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
@@ -20,6 +23,8 @@ import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.Vec3
+import org.agent.hexvoid.casting.iotas.RealityFlavorIota
+import org.agent.hexvoid.functionality.InterstitiaTeleport
 import org.agent.hexvoid.world.dimension.HexvoidDimensions
 import org.apache.logging.log4j.core.jmx.Server
 import kotlin.math.floor
@@ -57,55 +62,20 @@ class DebugPortalBlock(properties: Properties) : Block(properties) {
         hit: BlockHitResult
     ): InteractionResult {
         if (level.isClientSide)
-            return InteractionResult.SUCCESS
+            return InteractionResult.PASS
 
-        val server = player.server!!
+        val dataHolder = IXplatAbstractions.INSTANCE.findDataHolder(player.getItemInHand(hand))
+        if (dataHolder == null)
+            return InteractionResult.PASS
 
-        val origin = player.level() as ServerLevel
-        val interstitia = server.allLevels.find { level -> level.dimension().location() == HexvoidDimensions.INTERSTITIA_LEVEL_KEY.location() }
-
-        if (interstitia == null)
-            return InteractionResult.FAIL
-
-        if (interstitia == origin) {
-            val homeDim = server.getLevel((player as ServerPlayer).respawnDimension)
-            var antiSoftlock = false
-            if (homeDim == null || homeDim == interstitia) {
-                homeDim == server.overworld()
-                antiSoftlock = true
-            }
-            val compressionFactor = 1 / homeDim!!.dimensionType().coordinateScale
-            var spawnpoint = player.respawnPosition
-            spawnpoint = if (spawnpoint == null || antiSoftlock) {
-                homeDim.sharedSpawnPos!!
-            } else {
-                BlockPos((spawnpoint.x * compressionFactor).toInt(), spawnpoint.y, (spawnpoint.z * compressionFactor).toInt())
-            }
-            player.teleportTo(homeDim, spawnpoint.x + 0.5, spawnpoint.y.toDouble(), spawnpoint.z + 0.5, player.yRot, player.xRot)
-            player.onUpdateAbilities()
-        } else {
-            var altitude = 321.0
-            while (interstitia.getBlockState(BlockPos(pos.x, altitude.toInt(), pos.z)).isAir) {
-                altitude--
-                if (altitude < -64) {
-                    altitude = 321.0
-                    break
-                }
-            }
-            val compressionFactor = origin.dimensionType().coordinateScale
-            var destPos = Vec3(floor(pos.x * compressionFactor) + 0.5, altitude + 1, floor(pos.z * compressionFactor) + 0.5)
-            val border = interstitia.worldBorder
-
-            destPos = border.clampToBounds(destPos.x, destPos.y, destPos.z).center
-
-            (player as ServerPlayer).teleportTo(interstitia, destPos.x, destPos.y, destPos.z, player.yRot, player.xRot)
-            player.onUpdateAbilities()
-            if (altitude >= 321) {
-                player.addEffect(MobEffectInstance(MobEffects.SLOW_FALLING, 1200))
-            }
+        val iota = dataHolder.readIota(level as ServerLevel)
+        val globalPos = when (iota) {
+            is RealityFlavorIota -> iota.globalPos
+            is NullIota -> null
+            else -> return InteractionResult.PASS
         }
 
-        return InteractionResult.SUCCESS
+        return if (InterstitiaTeleport.teleport(player as ServerPlayer, globalPos)) InteractionResult.SUCCESS else InteractionResult.FAIL
     }
 
     override fun hasAnalogOutputSignal(state: BlockState) = false

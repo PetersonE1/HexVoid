@@ -13,7 +13,7 @@ object OpSaveFlavor : ConstMediaAction {
 
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {
         val dim = env.world.dimension()
-        val pos = env.castingEntity!!.onPos
+        val pos = env.castingEntity!!.onPos.above()
         val globalPos = GlobalPos.of(dim, pos)
 
         val flavorIota = RealityFlavorIota(globalPos)
