@@ -72,7 +72,7 @@ class DebugPortalBlock(properties: Properties) : Block(properties) {
         val globalPos = when (iota) {
             is RealityFlavorIota -> iota.globalPos
             is NullIota -> null
-            else -> return InteractionResult.PASS
+            else -> return InteractionResult.SUCCESS
         }
 
         return if (InterstitiaTeleport.teleport(player as ServerPlayer, globalPos)) InteractionResult.SUCCESS else InteractionResult.FAIL
