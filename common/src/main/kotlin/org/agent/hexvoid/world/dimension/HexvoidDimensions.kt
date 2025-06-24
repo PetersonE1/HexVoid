@@ -59,7 +59,7 @@ class HexvoidDimensions {
             context.register(INTERSTITIA_KEY, LevelStem(context.lookup(Registries.DIMENSION_TYPE).getOrThrow(INTERSTITIA_TYPE), NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(Climate.ParameterList(listOf(
                     Pair(
-                        Climate.parameters(0.2f, 0.1f, 0.15f, 0.0f, -0.05f, 0.0f, 0.0f),
+                        Climate.parameters(0.2f, 0.1f, 0.15f, 5.0f, -0.05f, 1.0f, 0.0f),
                         context.lookup(Registries.BIOME).getOrThrow(Biomes.PLAINS)),
                     Pair(
                         Climate.parameters(0.15f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f),

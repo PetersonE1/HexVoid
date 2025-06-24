@@ -17,6 +17,11 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
         DebugPortalBlock(BlockProperties.copy(Blocks.BEDROCK))
     }
 
+    @JvmField
+    val INTERSTITIAL_STONE = blockItem("interstitial_stone", HexvoidItems.props) {
+        Block(BlockProperties.copy(Blocks.STONE))
+    }
+
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)
 
     private fun <T: Block> blockItem(name: String, props: ItemProperties, builder: () -> T) =

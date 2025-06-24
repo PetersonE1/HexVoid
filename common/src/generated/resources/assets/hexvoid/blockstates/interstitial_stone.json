@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hexvoid:block/interstitial_stone"
+      },
+      {
+        "model": "hexvoid:block/interstitial_stone",
+        "y": 90
+      },
+      {
+        "model": "hexvoid:block/interstitial_stone",
+        "x": 180
+      },
+      {
+        "model": "hexvoid:block/interstitial_stone",
+        "y": 270
+      }
+    ]
+  }
+}

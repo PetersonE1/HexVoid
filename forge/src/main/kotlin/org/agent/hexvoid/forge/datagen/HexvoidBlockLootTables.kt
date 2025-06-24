@@ -8,6 +8,7 @@ import org.agent.hexvoid.registry.HexvoidBlocks
 class HexvoidBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.DEFAULT_FLAGS) {
     override fun generate() {
         dropSelf(HexvoidBlocks.DEBUG_PORTAL.value)
+        dropSelf(HexvoidBlocks.INTERSTITIAL_STONE.value)
     }
 
     override fun getKnownBlocks(): MutableIterable<Block> {
