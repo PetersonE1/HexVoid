@@ -17,6 +17,8 @@ import net.minecraft.world.level.dimension.BuiltinDimensionTypes
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings
 import org.agent.hexvoid.Hexvoid
+import org.agent.hexvoid.world.biome.HexvoidBiomes
+import org.agent.hexvoid.world.noise.HexvoidNoiseSettings
 import java.util.OptionalLong
 
 class HexvoidDimensions {
@@ -40,10 +42,10 @@ class HexvoidDimensions {
                 false, // bedWorks
                 true, // respawnAnchorWorks
                 -64, // minY
-                320, // height
-                320, // logicalHeight (portals can't spawn, and chorus fruit won't teleport above this height)
+                384, // height
+                384, // logicalHeight (portals can't spawn, and chorus fruit won't teleport above this height)
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn (what blocks infinitely burn)
-                BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation (sky effects)
+                BuiltinDimensionTypes.END_EFFECTS, // effectsLocation (sky effects)
                 1.0f, // ambientLight
                 DimensionType.MonsterSettings(
                     false, // piglinSafe
@@ -59,14 +61,14 @@ class HexvoidDimensions {
             context.register(INTERSTITIA_KEY, LevelStem(context.lookup(Registries.DIMENSION_TYPE).getOrThrow(INTERSTITIA_TYPE), NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(Climate.ParameterList(listOf(
                     Pair(
-                        Climate.parameters(0.2f, 0.1f, 0.15f, 5.0f, -0.05f, 1.0f, 0.0f),
-                        context.lookup(Registries.BIOME).getOrThrow(Biomes.PLAINS)),
-                    Pair(
-                        Climate.parameters(0.15f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f),
+                        Climate.parameters(0.2f, 0.1f, 0.5f, 1.0f, 0.0f, -0.85f, 0.0f),
+                        context.lookup(Registries.BIOME).getOrThrow(HexvoidBiomes.INTERSTITIAL_WASTES)),
+                    /*Pair(
+                        Climate.parameters(0.15f, 0.0f, -2.0f, 0.0f, 0.0f, 0.0f, 0.0f),
                         context.lookup(Registries.BIOME).getOrThrow(Biomes.OCEAN)
-                    )
+                    )*/
                 ))),
-                context.lookup(Registries.NOISE_SETTINGS).getOrThrow(NoiseGeneratorSettings.OVERWORLD)
+                context.lookup(Registries.NOISE_SETTINGS).getOrThrow(HexvoidNoiseSettings.INTERSTITIA_NOISE)
             )))
         }
     }

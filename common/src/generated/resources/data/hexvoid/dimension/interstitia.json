@@ -6,31 +6,19 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "minecraft:plains",
+          "biome": "hexvoid:interstitial_wastes",
           "parameters": {
-            "continentalness": 0.15,
-            "depth": -0.05,
-            "erosion": 5.0,
+            "continentalness": 0.5,
+            "depth": 0.0,
+            "erosion": 1.0,
             "humidity": 0.1,
             "offset": 0.0,
             "temperature": 0.2,
-            "weirdness": 1.0
-          }
-        },
-        {
-          "biome": "minecraft:ocean",
-          "parameters": {
-            "continentalness": 0.0,
-            "depth": 0.0,
-            "erosion": 0.0,
-            "humidity": 0.0,
-            "offset": 0.0,
-            "temperature": 0.15,
-            "weirdness": 0.0
+            "weirdness": -0.85
           }
         }
       ]
     },
-    "settings": "minecraft:overworld"
+    "settings": "hexvoid:interstitia_noise"
   }
 }
