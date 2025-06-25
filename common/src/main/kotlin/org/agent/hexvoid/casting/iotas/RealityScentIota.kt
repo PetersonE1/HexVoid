@@ -15,9 +15,9 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.level.Level
 
-class RealityFlavorIota(val globalPos: GlobalPos) : Iota(TYPE, globalPos) {
+class RealityScentIota(val globalPos: GlobalPos) : Iota(TYPE, globalPos) {
     override fun isTruthy(): Boolean = true
-    override fun toleratesOther(that: Iota): Boolean = typesMatch(this, that) && this.payload == (that as RealityFlavorIota).payload
+    override fun toleratesOther(that: Iota): Boolean = typesMatch(this, that) && this.payload == (that as RealityScentIota).payload
 
     override fun serialize(): CompoundTag {
         val tag = CompoundTag()
@@ -28,15 +28,15 @@ class RealityFlavorIota(val globalPos: GlobalPos) : Iota(TYPE, globalPos) {
     }
 
     companion object {
-        val TYPE = object : IotaType<RealityFlavorIota>() {
-            override fun deserialize(tag: Tag, world: ServerLevel): RealityFlavorIota {
+        val TYPE = object : IotaType<RealityScentIota>() {
+            override fun deserialize(tag: Tag, world: ServerLevel): RealityScentIota {
                 tag as CompoundTag
                 val dim: ResourceKey<Level> = ResourceKey.create(Registries.DIMENSION, ResourceLocation(tag.getString("dimNamespace"), tag.getString("dimPath")))
                 val xyz = tag.getIntArray("pos")
                 val pos = BlockPos(xyz[0], xyz[1], xyz[2])
                 val globalPos = GlobalPos.of(dim, pos)
 
-                return RealityFlavorIota(globalPos)
+                return RealityScentIota(globalPos)
             }
 
             override fun display(tag: Tag): Component {
