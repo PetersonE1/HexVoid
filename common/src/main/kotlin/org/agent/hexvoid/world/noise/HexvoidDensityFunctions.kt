@@ -18,8 +18,8 @@ class HexvoidDensityFunctions {
                 0.25, // xz scale
                 0.25, // y scale
                 80.0, // xz factor
-                160.0, // y factor
-                8.0)) // smear scale multiplier, capped at 8
+                40.0, // y factor
+                4.0)) // smear scale multiplier, capped at 8
         }
     }
 }
