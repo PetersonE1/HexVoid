@@ -22,10 +22,12 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
     override fun registerStatesAndModels() {
         easyHorizontalBlockAndItem(HexvoidBlocks.DEBUG_PORTAL)
         easyBlockAndItem(HexvoidBlocks.INTERSTITIAL_STONE, true)
+        easyBlockAndItem(HexvoidBlocks.INTERSTITIAL_COBBLESTONE)
         easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_EMPTY)
         easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_CARTOGRAPHER)
         easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_SNIFFER)
         easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_FULL)
+        easyBlockAndItem(HexvoidBlocks.QUARTZ_INFUSED_STONE, true)
     }
 
     private fun easyHorizontalBlockAndItem(entry: RegistrarEntry<Block>) {

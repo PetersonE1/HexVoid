@@ -25,6 +25,11 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     }
 
     @JvmField
+    val INTERSTITIAL_COBBLESTONE = blockItem("interstitial_cobblestone", HexvoidItems.props) {
+        Block(BlockProperties.copy(Blocks.COBBLESTONE))
+    }
+
+    @JvmField
     val PORTAL_MAPPER_EMPTY = blockItem("portal_mapper_empty", HexvoidItems.props) {
         HorizontalBlock(BlockProperties.copy(Blocks.STONE))
     }
@@ -42,6 +47,11 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     @JvmField
     val PORTAL_MAPPER_FULL = blockItem("portal_mapper_full", HexvoidItems.props) {
         PortalMapperFull(BlockProperties.copy(Blocks.STONE).lightLevel{10})
+    }
+
+    @JvmField
+    val QUARTZ_INFUSED_STONE = blockItem("quartz_infused_stone", HexvoidItems.props) {
+        Block(BlockProperties.copy(Blocks.STONE))
     }
 
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)

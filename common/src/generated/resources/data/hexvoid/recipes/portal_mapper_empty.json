@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "hexcasting:charged_amethyst"
+    },
+    "e": {
+      "item": "minecraft:ender_pearl"
+    },
+    "q": {
+      "item": "hexvoid:quartz_infused_stone"
+    },
+    "s": {
+      "item": "hexcasting:slate_block"
+    }
+  },
+  "pattern": [
+    "sss",
+    "qaq",
+    "qeq"
+  ],
+  "result": {
+    "item": "hexvoid:portal_mapper_empty"
+  },
+  "show_notification": true
+}

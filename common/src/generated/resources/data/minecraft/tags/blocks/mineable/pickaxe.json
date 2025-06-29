@@ -1,0 +1,11 @@
+{
+  "values": [
+    "hexvoid:interstitial_stone",
+    "hexvoid:interstitial_cobblestone",
+    "hexvoid:quartz_infused_stone",
+    "hexvoid:portal_mapper_empty",
+    "hexvoid:portal_mapper_cartographer",
+    "hexvoid:portal_mapper_sniffer",
+    "hexvoid:portal_mapper_full"
+  ]
+}

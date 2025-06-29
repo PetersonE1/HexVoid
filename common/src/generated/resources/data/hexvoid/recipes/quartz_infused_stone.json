@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "q": {
+      "item": "minecraft:quartz"
+    },
+    "s": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    "sss",
+    "sqs",
+    "sss"
+  ],
+  "result": {
+    "item": "hexvoid:quartz_infused_stone"
+  },
+  "show_notification": true
+}

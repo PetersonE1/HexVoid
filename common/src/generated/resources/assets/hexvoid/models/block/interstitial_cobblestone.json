@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexvoid:block/interstitial_cobblestone",
+    "east": "hexvoid:block/interstitial_cobblestone",
+    "north": "hexvoid:block/interstitial_cobblestone",
+    "particle": "hexvoid:block/interstitial_cobblestone",
+    "south": "hexvoid:block/interstitial_cobblestone",
+    "up": "hexvoid:block/interstitial_cobblestone",
+    "west": "hexvoid:block/interstitial_cobblestone"
+  }
+}

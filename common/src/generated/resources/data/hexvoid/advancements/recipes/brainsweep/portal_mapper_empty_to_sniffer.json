@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexvoid:brainsweep/portal_mapper_empty_to_sniffer"
+        "recipe": "hexvoid:portal_mapper_empty_to_sniffer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexvoid:brainsweep/portal_mapper_empty_to_sniffer"
+      "hexvoid:portal_mapper_empty_to_sniffer"
     ]
   },
   "sends_telemetry_event": true

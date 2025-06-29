@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexvoid:block/quartz_infused_stone",
+    "east": "hexvoid:block/quartz_infused_stone",
+    "north": "hexvoid:block/quartz_infused_stone",
+    "particle": "hexvoid:block/quartz_infused_stone",
+    "south": "hexvoid:block/quartz_infused_stone",
+    "up": "hexvoid:block/quartz_infused_stone",
+    "west": "hexvoid:block/quartz_infused_stone"
+  }
+}

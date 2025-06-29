@@ -13,6 +13,7 @@ import org.agent.hexvoid.forge.datagen.HexvoidBlockLootTables
 import org.agent.hexvoid.forge.datagen.HexvoidBlockModels
 import org.agent.hexvoid.forge.datagen.HexvoidRecipes
 import org.agent.hexvoid.forge.datagen.HexvoidWorldGenProvider
+import org.agent.hexvoid.forge.datagen.tags.HexvoidBlockTagProvider
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
 @Mod(Hexvoid.MODID)
@@ -37,6 +38,7 @@ class HexvoidForge {
                 ))
             }
             addProvider(includeServer()) { HexvoidRecipes(it, Hexvoid.MODID) }
+            addProvider(includeServer()) { HexvoidBlockTagProvider(it, lookupProvider) }
         }
     }
 }

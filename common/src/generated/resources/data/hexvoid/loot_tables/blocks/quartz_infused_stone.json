@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hexvoid:interstitial_cobblestone"
+          "name": "hexvoid:quartz_infused_stone"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "hexvoid:blocks/interstitial_stone"
+  "random_sequence": "hexvoid:blocks/quartz_infused_stone"
 }
