@@ -1,0 +1,18 @@
+{
+  "type": "hexcasting:brainsweep",
+  "blockIn": {
+    "type": "block",
+    "block": "hexvoid:portal_mapper_empty"
+  },
+  "cost": 1000000,
+  "entityIn": {
+    "type": "entity_type",
+    "entityType": "minecraft:sniffer"
+  },
+  "result": {
+    "name": "hexvoid:portal_mapper_sniffer",
+    "properties": {
+      "facing": "north"
+    }
+  }
+}

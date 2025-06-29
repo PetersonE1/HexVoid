@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "hexvoid:block/portal_mapper_cartographer",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "hexvoid:block/portal_mapper_cartographer"
+    },
+    "facing=south": {
+      "model": "hexvoid:block/portal_mapper_cartographer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "hexvoid:block/portal_mapper_cartographer",
+      "y": 270
+    }
+  }
+}

@@ -11,6 +11,7 @@ import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
 import org.agent.hexvoid.forge.datagen.HexvoidBlockLootTables
 import org.agent.hexvoid.forge.datagen.HexvoidBlockModels
+import org.agent.hexvoid.forge.datagen.HexvoidRecipes
 import org.agent.hexvoid.forge.datagen.HexvoidWorldGenProvider
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
@@ -35,6 +36,7 @@ class HexvoidForge {
                     LootTableProvider.SubProviderEntry(::HexvoidBlockLootTables, LootContextParamSets.BLOCK)
                 ))
             }
+            addProvider(includeServer()) { HexvoidRecipes(it, Hexvoid.MODID) }
         }
     }
 }

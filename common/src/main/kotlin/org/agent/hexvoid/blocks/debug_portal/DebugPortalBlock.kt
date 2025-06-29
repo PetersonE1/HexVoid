@@ -21,29 +21,7 @@ import org.agent.hexvoid.casting.iotas.RealityScentIota
 import org.agent.hexvoid.functionality.InterstitiaTeleport
 
 @Suppress("OVERRIDE_DEPRECATION")
-class DebugPortalBlock(properties: Properties) : Block(properties) {
-    init {
-        registerDefaultState(
-            getStateDefinition().any()
-                .setValue(FACING, Direction.NORTH)
-        )
-    }
-
-    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
-        builder.add(FACING)
-    }
-
-    override fun getStateForPlacement(ctx: BlockPlaceContext) =
-        defaultBlockState().setValue(FACING, ctx.horizontalDirection.opposite)
-
-    override fun mirror(state: BlockState, mirror: Mirror) =
-        state.rotate(mirror.getRotation(state.getValue(FACING)))
-
-    override fun rotate(state: BlockState, rotation: Rotation) =
-        state.setValue(FACING, rotation.rotate(state.getValue(FACING)))
-
-    override fun getRenderShape(state: BlockState) = RenderShape.MODEL
-
+class DebugPortalBlock(properties: Properties) : HorizontalBlock(properties) {
     override fun use(
         state: BlockState,
         level: Level,
@@ -67,11 +45,5 @@ class DebugPortalBlock(properties: Properties) : Block(properties) {
         }
 
         return if (InterstitiaTeleport.teleport(player as ServerPlayer, globalPos)) InteractionResult.SUCCESS else InteractionResult.FAIL
-    }
-
-    override fun hasAnalogOutputSignal(state: BlockState) = false
-
-    companion object {
-        val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
     }
 }

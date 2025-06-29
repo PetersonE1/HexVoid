@@ -9,6 +9,10 @@ class HexvoidBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.DEFAUL
     override fun generate() {
         dropSelf(HexvoidBlocks.DEBUG_PORTAL.value)
         dropSelf(HexvoidBlocks.INTERSTITIAL_STONE.value)
+        dropSelf(HexvoidBlocks.PORTAL_MAPPER_EMPTY.value)
+        dropSelf(HexvoidBlocks.PORTAL_MAPPER_CARTOGRAPHER.value)
+        dropSelf(HexvoidBlocks.PORTAL_MAPPER_SNIFFER.value)
+        dropSelf(HexvoidBlocks.PORTAL_MAPPER_FULL.value)
     }
 
     override fun getKnownBlocks(): MutableIterable<Block> {

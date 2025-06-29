@@ -1,0 +1,19 @@
+{
+  "type": "hexcasting:brainsweep",
+  "blockIn": {
+    "type": "block",
+    "block": "hexvoid:portal_mapper_sniffer"
+  },
+  "cost": 1000000,
+  "entityIn": {
+    "type": "villager",
+    "minLevel": 5,
+    "profession": "cartographer"
+  },
+  "result": {
+    "name": "hexvoid:portal_mapper_full",
+    "properties": {
+      "facing": "north"
+    }
+  }
+}

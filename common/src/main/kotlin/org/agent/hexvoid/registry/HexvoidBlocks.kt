@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.material.PushReaction
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
+import org.agent.hexvoid.blocks.debug_portal.HorizontalBlock
+import org.agent.hexvoid.blocks.portal_mapper.PortalMapperFull
 import net.minecraft.world.item.Item.Properties as ItemProperties
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties as BlockProperties
 
@@ -20,6 +22,26 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     @JvmField
     val INTERSTITIAL_STONE = blockItem("interstitial_stone", HexvoidItems.props) {
         Block(BlockProperties.copy(Blocks.STONE))
+    }
+
+    @JvmField
+    val PORTAL_MAPPER_EMPTY = blockItem("portal_mapper_empty", HexvoidItems.props) {
+        HorizontalBlock(BlockProperties.copy(Blocks.STONE))
+    }
+
+    @JvmField
+    val PORTAL_MAPPER_CARTOGRAPHER = blockItem("portal_mapper_cartographer", HexvoidItems.props) {
+        HorizontalBlock(BlockProperties.copy(Blocks.STONE).lightLevel{5})
+    }
+
+    @JvmField
+    val PORTAL_MAPPER_SNIFFER = blockItem("portal_mapper_sniffer", HexvoidItems.props) {
+        HorizontalBlock(BlockProperties.copy(Blocks.STONE).lightLevel{5})
+    }
+
+    @JvmField
+    val PORTAL_MAPPER_FULL = blockItem("portal_mapper_full", HexvoidItems.props) {
+        PortalMapperFull(BlockProperties.copy(Blocks.STONE).lightLevel{10})
     }
 
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)
