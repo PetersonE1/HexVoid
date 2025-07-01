@@ -1,0 +1,16 @@
+{
+  name: "hexvoid.book.patterns.spells.hexvoid_spells",
+  category: "hexcasting:patterns/spells",
+  icon: "hexvoid:interstitial_stone",
+  advancement: "hexcasting:enlightenment",
+  pages: [
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexvoid:save_scent",
+      anchor: "hexvoid:save_scent",
+      input: "",
+      output: "Reality Scent",
+      text: "hexvoid.book.patterns.spells.hexvoid_spells.reality_scent",
+    },
+  ],
+}

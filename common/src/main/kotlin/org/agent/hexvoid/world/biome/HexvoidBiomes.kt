@@ -17,7 +17,7 @@ import org.agent.hexvoid.Hexvoid
 class HexvoidBiomes {
     companion object {
         val INTERSTITIAL_WASTES: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME,
-            ResourceLocation(Hexvoid.MODID, "interstitial_wastes"))
+            Hexvoid.id("interstitial_wastes"))
 
         @JvmStatic
         fun boostrap(context: BootstapContext<Biome>) {

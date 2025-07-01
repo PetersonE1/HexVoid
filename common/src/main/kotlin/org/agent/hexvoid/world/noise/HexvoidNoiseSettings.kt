@@ -10,7 +10,7 @@ import org.agent.hexvoid.Hexvoid
 class HexvoidNoiseSettings {
     companion object {
         val INTERSTITIA_NOISE: ResourceKey<NoiseGeneratorSettings> = ResourceKey.create(Registries.NOISE_SETTINGS,
-            ResourceLocation(Hexvoid.MODID, "interstitia_noise")
+            Hexvoid.id("interstitia_noise")
         )
 
         @JvmStatic

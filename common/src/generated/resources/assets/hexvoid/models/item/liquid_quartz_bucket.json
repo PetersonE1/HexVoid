@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bucket",
+  "textures": {
+    "layer0": "hexvoid:item/liquid_quartz_bucket"
+  }
+}

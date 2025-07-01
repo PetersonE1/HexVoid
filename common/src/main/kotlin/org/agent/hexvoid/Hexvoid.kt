@@ -8,6 +8,7 @@ import org.agent.hexvoid.networking.HexvoidNetworking
 import org.agent.hexvoid.registry.HexvoidActions
 import org.agent.hexvoid.registry.HexvoidBlocks
 import org.agent.hexvoid.registry.HexvoidCreativeTabs
+import org.agent.hexvoid.registry.HexvoidFluids
 import org.agent.hexvoid.registry.HexvoidIotaTypes
 import org.agent.hexvoid.registry.HexvoidItems
 
@@ -23,6 +24,7 @@ object Hexvoid {
     fun init() {
         HexvoidConfig.init()
         initRegistries(
+            HexvoidFluids,
             HexvoidBlocks,
             HexvoidItems,
             HexvoidCreativeTabs,

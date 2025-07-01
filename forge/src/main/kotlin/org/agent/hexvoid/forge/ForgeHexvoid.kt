@@ -11,6 +11,7 @@ import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
 import org.agent.hexvoid.forge.datagen.HexvoidBlockLootTables
 import org.agent.hexvoid.forge.datagen.HexvoidBlockModels
+import org.agent.hexvoid.forge.datagen.HexvoidItemModels
 import org.agent.hexvoid.forge.datagen.HexvoidRecipes
 import org.agent.hexvoid.forge.datagen.HexvoidWorldGenProvider
 import org.agent.hexvoid.forge.datagen.tags.HexvoidBlockTagProvider
@@ -32,6 +33,8 @@ class HexvoidForge {
             val efh = existingFileHelper
             addProvider(includeServer()) { HexvoidWorldGenProvider(it, lookupProvider) }
             addProvider(includeClient()) { HexvoidBlockModels(it, efh) }
+            addProvider(includeClient()) { HexvoidItemModels(it, efh) }
+            //addProvider(includeClient()) { ItemModelBuilders(it, efh) }
             addProvider(includeServer()) {
                 LootTableProvider(it, setOf(), listOf(
                     LootTableProvider.SubProviderEntry(::HexvoidBlockLootTables, LootContextParamSets.BLOCK)

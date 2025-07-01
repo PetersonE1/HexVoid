@@ -12,9 +12,9 @@ import org.agent.hexvoid.Hexvoid
 class HexvoidNoises {
     companion object {
         val TEMPERATURE: ResourceKey<NoiseParameters> = ResourceKey.create(Registries.NOISE,
-            ResourceLocation(Hexvoid.MODID, "temperature"))
+            Hexvoid.id("temperature"))
         val VEGETATION: ResourceKey<NoiseParameters> = ResourceKey.create(Registries.NOISE,
-            ResourceLocation(Hexvoid.MODID, "vegetation"))
+            Hexvoid.id("vegetation"))
 
         fun boostrap(context: BootstapContext<NoiseParameters>) {
             register(context, TEMPERATURE, -8, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);

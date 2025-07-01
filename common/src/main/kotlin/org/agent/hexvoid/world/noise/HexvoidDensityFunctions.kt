@@ -11,7 +11,7 @@ import org.agent.hexvoid.Hexvoid
 class HexvoidDensityFunctions {
     companion object {
         val BASE_3D_NOISE_HEXVOID: ResourceKey<DensityFunction> = ResourceKey.create(Registries.DENSITY_FUNCTION,
-            ResourceLocation(Hexvoid.MODID, "base_3d_noise_hexvoid"))
+            Hexvoid.id("base_3d_noise_hexvoid"))
 
         fun boostrap(context: BootstapContext<DensityFunction>) {
             context.register(BASE_3D_NOISE_HEXVOID, BlendedNoise.createUnseeded(

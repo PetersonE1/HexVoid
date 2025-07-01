@@ -62,7 +62,7 @@ class HexvoidNoiseBuilders {
                 densityFunctions,
                 ResourceKey.create(
                     Registries.DENSITY_FUNCTION,
-                    ResourceLocation(Hexvoid.MODID, "base_3d_noise_hexvoid")
+                    Hexvoid.id("base_3d_noise_hexvoid")
                 )
             )
             density = DensityFunctions.add(density, DensityFunctions.constant(0.53))

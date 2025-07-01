@@ -24,11 +24,11 @@ import java.util.OptionalLong
 class HexvoidDimensions {
     companion object {
         val INTERSTITIA_KEY: ResourceKey<LevelStem> = ResourceKey.create(Registries.LEVEL_STEM,
-            ResourceLocation(Hexvoid.MODID, "interstitia"))
+            Hexvoid.id("interstitia"))
         val INTERSTITIA_LEVEL_KEY: ResourceKey<Level> = ResourceKey.create(Registries.DIMENSION,
-            ResourceLocation(Hexvoid.MODID, "interstitia"))
+            Hexvoid.id("interstitia"))
         val INTERSTITIA_TYPE: ResourceKey<DimensionType> = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation(Hexvoid.MODID, "interstitia_type"))
+            Hexvoid.id("interstitia_type"))
 
         @JvmStatic
         fun bootstrapType(context: BootstapContext<DimensionType>) {

@@ -6,14 +6,12 @@ import at.petrak.hexcasting.api.casting.math.HexDir
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.HexRegistries
 import at.petrak.hexcasting.common.lib.hex.HexActions
-import org.agent.hexvoid.casting.actions.spells.OpCongratulate
 import org.agent.hexvoid.casting.actions.spells.OpSaveScent
 
 object HexvoidActions : HexvoidRegistrar<ActionRegistryEntry>(
     HexRegistries.ACTION,
     { HexActions.REGISTRY },
 ) {
-    val CONGRATULATE = make("congratulate", HexDir.WEST, "eed", OpCongratulate)
     val SAVE_SCENT = make("save_scent", HexDir.SOUTH_WEST, "eqaqewedew", OpSaveScent)
 
     private fun make(name: String, startDir: HexDir, signature: String, action: Action) =

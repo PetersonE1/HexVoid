@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.material.PushReaction
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
 import org.agent.hexvoid.blocks.debug_portal.HorizontalBlock
+import org.agent.hexvoid.blocks.fluids.liquid_quartz.LiquidQuartzBlock
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperFull
 import net.minecraft.world.item.Item.Properties as ItemProperties
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties as BlockProperties
@@ -53,6 +54,9 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     val QUARTZ_INFUSED_STONE = blockItem("quartz_infused_stone", HexvoidItems.props) {
         Block(BlockProperties.copy(Blocks.STONE))
     }
+
+    @JvmField
+    val LIQUID_QUARTZ_BLOCK = register("liquid_quartz") { LiquidQuartzBlock.INSTANCE }
 
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)
 
