@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.entity.layers.RenderLayer
 import net.minecraft.resources.ResourceLocation
+import org.agent.hexvoid.Hexvoid
 import org.agent.hexvoid.registry.HexvoidFluids
 
 object FabricHexvoidClient : ClientModInitializer {
@@ -16,8 +17,8 @@ object FabricHexvoidClient : ClientModInitializer {
 
         FluidRenderHandlerRegistry.INSTANCE.register(HexvoidFluids.LIQUID_QUARTZ.value, HexvoidFluids.LIQUID_QUARTZ_FLOWING.value,
             SimpleFluidRenderHandler(
-                ResourceLocation("minecraft:block/water_still"),
-                ResourceLocation("minecraft:block/water_flow"),
+                Hexvoid.id("block/liquid_quartz/liquid_quartz_still"),
+                Hexvoid.id("block/liquid_quartz/liquid_quartz_flow"),
                 0xFFFFFFFF.toInt()
             ))
 
