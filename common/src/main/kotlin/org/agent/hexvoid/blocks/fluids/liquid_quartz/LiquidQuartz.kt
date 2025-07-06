@@ -104,9 +104,6 @@ open class LiquidQuartz : FlowingFluid() {
         val FLOWING_ID = Hexvoid.id("flowing_liquid_quartz")
         val FLOWING_FLUID = LiquidQuartz.Flowing()
         val STILL_FLUID = LiquidQuartz.Still()
-
-        val TAG = TagKey.create(Registries.FLUID, ID)
-
     }
 
     class Flowing : LiquidQuartz() {

@@ -28,6 +28,10 @@ class LiquidQuartzBlock(fluid: FlowingFluid, properties: Properties) : LiquidBlo
         return true
     }
 
+    override fun propagatesSkylightDown(state: BlockState, level: BlockGetter, pos: BlockPos): Boolean {
+        return true
+    }
+
     private var _portalActive: Boolean = false
     private var _targetPos: GlobalPos? = null
 
