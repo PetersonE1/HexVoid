@@ -1,3 +1,22 @@
 {
-  "parent": "hexvoid:block/portal_mapper_sniffer"
+  "overrides": [
+    {
+      "model": "hexvoid:block/portal_mapper_sniffer_empty",
+      "predicate": {
+        "hexvoid:item_state": 0.0
+      }
+    },
+    {
+      "model": "hexvoid:block/portal_mapper_sniffer_full_scent",
+      "predicate": {
+        "hexvoid:item_state": 0.5
+      }
+    },
+    {
+      "model": "hexvoid:block/portal_mapper_sniffer_full_null",
+      "predicate": {
+        "hexvoid:item_state": 1.0
+      }
+    }
+  ]
 }

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger
 import org.agent.hexvoid.config.HexvoidConfig
 import org.agent.hexvoid.networking.HexvoidNetworking
 import org.agent.hexvoid.registry.HexvoidActions
+import org.agent.hexvoid.registry.HexvoidBlockEntities
 import org.agent.hexvoid.registry.HexvoidBlocks
 import org.agent.hexvoid.registry.HexvoidCreativeTabs
 import org.agent.hexvoid.registry.HexvoidFluids
@@ -26,6 +27,7 @@ object Hexvoid {
         initRegistries(
             HexvoidFluids,
             HexvoidBlocks,
+            HexvoidBlockEntities,
             HexvoidItems,
             HexvoidCreativeTabs,
             HexvoidActions,

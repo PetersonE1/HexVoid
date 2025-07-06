@@ -10,7 +10,8 @@ import net.minecraft.world.level.material.PushReaction
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
 import org.agent.hexvoid.blocks.debug_portal.HorizontalBlock
 import org.agent.hexvoid.blocks.fluids.liquid_quartz.LiquidQuartzBlock
-import org.agent.hexvoid.blocks.portal_mapper.PortalMapperFull
+import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
+import org.agent.hexvoid.items.base.PortalMapperBlockItem
 import net.minecraft.world.item.Item.Properties as ItemProperties
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties as BlockProperties
 
@@ -31,24 +32,32 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     }
 
     @JvmField
-    val PORTAL_MAPPER_EMPTY = blockItem("portal_mapper_empty", HexvoidItems.props) {
-        HorizontalBlock(BlockProperties.copy(Blocks.STONE))
-    }
+    val PORTAL_MAPPER_EMPTY = blockItem(
+        "portal_mapper_empty",
+        blockBuilder = { PortalMapperBlock(BlockProperties.copy(Blocks.STONE)) },
+        itemBuilder = { PortalMapperBlockItem(it, HexvoidItems.props) }
+    )
 
     @JvmField
-    val PORTAL_MAPPER_CARTOGRAPHER = blockItem("portal_mapper_cartographer", HexvoidItems.props) {
-        HorizontalBlock(BlockProperties.copy(Blocks.STONE).lightLevel{5})
-    }
+    val PORTAL_MAPPER_CARTOGRAPHER = blockItem(
+        "portal_mapper_cartographer",
+        blockBuilder = { PortalMapperBlock(BlockProperties.copy(Blocks.STONE).lightLevel{5}) },
+        itemBuilder = { PortalMapperBlockItem(it, HexvoidItems.props) }
+    )
 
     @JvmField
-    val PORTAL_MAPPER_SNIFFER = blockItem("portal_mapper_sniffer", HexvoidItems.props) {
-        HorizontalBlock(BlockProperties.copy(Blocks.STONE).lightLevel{5})
-    }
+    val PORTAL_MAPPER_SNIFFER = blockItem(
+        "portal_mapper_sniffer",
+        blockBuilder = { PortalMapperBlock(BlockProperties.copy(Blocks.STONE).lightLevel{5}) },
+        itemBuilder = { PortalMapperBlockItem(it, HexvoidItems.props) }
+    )
 
     @JvmField
-    val PORTAL_MAPPER_FULL = blockItem("portal_mapper_full", HexvoidItems.props) {
-        PortalMapperFull(BlockProperties.copy(Blocks.STONE).lightLevel{10})
-    }
+    val PORTAL_MAPPER_FULL = blockItem(
+        "portal_mapper_full",
+        blockBuilder = { PortalMapperBlock(BlockProperties.copy(Blocks.STONE).lightLevel{10}) },
+        itemBuilder = { PortalMapperBlockItem(it, HexvoidItems.props) }
+    )
 
     @JvmField
     val QUARTZ_INFUSED_STONE = blockItem("quartz_infused_stone", HexvoidItems.props) {

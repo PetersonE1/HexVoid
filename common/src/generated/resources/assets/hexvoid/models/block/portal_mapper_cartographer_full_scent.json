@@ -6,7 +6,7 @@
     "north": "hexvoid:block/portal_mapper_cartographer/north",
     "particle": "hexvoid:block/portal_mapper_cartographer/north",
     "south": "hexvoid:block/portal_mapper_cartographer/south",
-    "up": "hexvoid:block/portal_mapper_cartographer/up",
+    "up": "hexvoid:block/portal_mapper_cartographer/up_full_scent",
     "west": "hexvoid:block/portal_mapper_cartographer/west"
   }
 }

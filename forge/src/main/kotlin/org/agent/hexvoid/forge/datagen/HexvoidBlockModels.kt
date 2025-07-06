@@ -13,8 +13,12 @@ import net.minecraftforge.client.model.generators.ConfiguredModel
 import net.minecraftforge.client.model.generators.ModelFile
 import net.minecraftforge.common.data.ExistingFileHelper
 import org.agent.hexvoid.Hexvoid
+import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
+import org.agent.hexvoid.blocks.portal_mapper.PortalMapperItemState
+import org.agent.hexvoid.items.base.PortalMapperBlockItem
 import org.agent.hexvoid.registry.HexvoidBlocks
 import org.agent.hexvoid.registry.RegistrarEntry
+import org.agent.hexvoid.utils.asItemPredicate
 import java.util.function.Function
 
 @Suppress("SameParameterValue")
@@ -23,10 +27,10 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         easyHorizontalBlockAndItem(HexvoidBlocks.DEBUG_PORTAL)
         easyBlockAndItem(HexvoidBlocks.INTERSTITIAL_STONE, true)
         easyBlockAndItem(HexvoidBlocks.INTERSTITIAL_COBBLESTONE)
-        easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_EMPTY)
-        easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_CARTOGRAPHER)
-        easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_SNIFFER)
-        easyHorizontalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_FULL)
+        portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_EMPTY)
+        portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_CARTOGRAPHER)
+        portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_SNIFFER)
+        portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_FULL)
         easyBlockAndItem(HexvoidBlocks.QUARTZ_INFUSED_STONE, true)
     }
 
@@ -129,11 +133,44 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
 
             .nextModel()
             .modelFile(model)
-            .rotationX(180)
+            .rotationY(180)
 
             .nextModel()
             .modelFile(model)
             .rotationY(270)
             .addModel()
+    }
+
+    private fun portalBlockAndItem(entry: RegistrarEntry<Block>) {
+        getVariantBuilder(entry.value).also { builder ->
+            val path = entry.id.path
+            val itemModel = itemModels().getBuilder(path)
+            for (stateName in listOf("empty", "full_scent", "full_null")) {
+                val model = models()
+                    .cube(
+                        "${path}_$stateName",
+                        modLoc("block/${path}/down"),
+                        modLoc("block/${path}/up_${stateName}"),
+                        modLoc("block/${path}/north"),
+                        modLoc("block/${path}/south"),
+                        modLoc("block/${path}/east"),
+                        modLoc("block/${path}/west"),).texture("particle", modLoc("block/${path}/north"))
+
+                itemModel.override()
+                    .predicate(PortalMapperBlockItem.ITEM_STATE, PortalMapperItemState.valueOf(stateName.uppercase()).asItemPredicate)
+                    .model(model)
+
+                for (rotation in arrayOf(Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST)) {
+                    builder
+                        .partialState()
+                        .with(PortalMapperBlock.ITEM_STATE, PortalMapperItemState.valueOf(stateName.uppercase()))
+                        .with(PortalMapperBlock.FACING, rotation)
+                        .modelForState()
+                        .rotationY((rotation.toYRot().toInt() + 180) % 360)
+                        .modelFile(model)
+                        .addModel()
+                }
+            }
+        }
     }
 }

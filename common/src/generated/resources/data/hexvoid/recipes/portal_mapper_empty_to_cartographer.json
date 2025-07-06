@@ -13,7 +13,8 @@
   "result": {
     "name": "hexvoid:portal_mapper_cartographer",
     "properties": {
-      "facing": "north"
+      "facing": "north",
+      "item_state": "empty"
     }
   }
 }

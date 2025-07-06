@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "hexvoid:block/portal_mapper_empty/down",
+    "east": "hexvoid:block/portal_mapper_empty/east",
+    "north": "hexvoid:block/portal_mapper_empty/north",
+    "particle": "hexvoid:block/portal_mapper_empty/north",
+    "south": "hexvoid:block/portal_mapper_empty/south",
+    "up": "hexvoid:block/portal_mapper_empty/up_empty",
+    "west": "hexvoid:block/portal_mapper_empty/west"
+  }
+}

@@ -1,18 +1,48 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "hexvoid:block/portal_mapper_full",
+    "facing=east,item_state=empty": {
+      "model": "hexvoid:block/portal_mapper_full_empty",
       "y": 90
     },
-    "facing=north": {
-      "model": "hexvoid:block/portal_mapper_full"
+    "facing=east,item_state=full_null": {
+      "model": "hexvoid:block/portal_mapper_full_full_null",
+      "y": 90
     },
-    "facing=south": {
-      "model": "hexvoid:block/portal_mapper_full",
+    "facing=east,item_state=full_scent": {
+      "model": "hexvoid:block/portal_mapper_full_full_scent",
+      "y": 90
+    },
+    "facing=north,item_state=empty": {
+      "model": "hexvoid:block/portal_mapper_full_empty"
+    },
+    "facing=north,item_state=full_null": {
+      "model": "hexvoid:block/portal_mapper_full_full_null"
+    },
+    "facing=north,item_state=full_scent": {
+      "model": "hexvoid:block/portal_mapper_full_full_scent"
+    },
+    "facing=south,item_state=empty": {
+      "model": "hexvoid:block/portal_mapper_full_empty",
       "y": 180
     },
-    "facing=west": {
-      "model": "hexvoid:block/portal_mapper_full",
+    "facing=south,item_state=full_null": {
+      "model": "hexvoid:block/portal_mapper_full_full_null",
+      "y": 180
+    },
+    "facing=south,item_state=full_scent": {
+      "model": "hexvoid:block/portal_mapper_full_full_scent",
+      "y": 180
+    },
+    "facing=west,item_state=empty": {
+      "model": "hexvoid:block/portal_mapper_full_empty",
+      "y": 270
+    },
+    "facing=west,item_state=full_null": {
+      "model": "hexvoid:block/portal_mapper_full_full_null",
+      "y": 270
+    },
+    "facing=west,item_state=full_scent": {
+      "model": "hexvoid:block/portal_mapper_full_full_scent",
       "y": 270
     }
   }
