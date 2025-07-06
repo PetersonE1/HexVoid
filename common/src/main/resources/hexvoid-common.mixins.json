@@ -6,6 +6,7 @@
   "client": [
   ],
   "mixins": [
+    "InLiquidQuartzDetectorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

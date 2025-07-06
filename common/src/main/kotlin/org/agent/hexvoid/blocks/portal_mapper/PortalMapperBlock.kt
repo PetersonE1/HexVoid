@@ -1,8 +1,11 @@
 package org.agent.hexvoid.blocks.portal_mapper
 
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.server.level.ServerLevel
+import net.minecraft.util.RandomSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.item.ItemEntity
@@ -12,6 +15,7 @@ import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.LiquidBlock
 import net.minecraft.world.level.block.RenderShape
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
@@ -23,6 +27,8 @@ import net.minecraft.world.level.storage.loot.LootParams
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import net.minecraft.world.phys.BlockHitResult
 import org.agent.hexvoid.blocks.debug_portal.HorizontalEntityBlock
+import org.agent.hexvoid.blocks.fluids.liquid_quartz.LiquidQuartzBlock
+import org.agent.hexvoid.casting.iotas.RealityScentIota
 import org.agent.hexvoid.registry.HexvoidBlocks
 
 @Suppress("OVERRIDE_DEPRECATION")
@@ -111,6 +117,19 @@ class PortalMapperBlock(properties: Properties) : HorizontalEntityBlock(properti
         val stack = ItemStack(this)
         blockEntity.saveToItem(stack)
         return mutableListOf(stack)
+    }
+
+    fun activatePortal(duration: Int, level: ServerLevel, pos: BlockPos) {
+        val blockEntity = getBlockEntity(level, pos) ?: return
+        val iota = blockEntity.readIota(level)
+        val globalPos = when (iota) {
+            is RealityScentIota -> iota.globalPos
+            is NullIota -> null
+            else -> return
+        }
+
+        val block = level.getBlockState(pos.below()).block as LiquidQuartzBlock
+        block.activatePortal(duration, level, pos.below(), globalPos)
     }
 
     companion object {

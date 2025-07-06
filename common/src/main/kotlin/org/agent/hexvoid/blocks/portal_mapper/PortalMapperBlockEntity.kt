@@ -7,6 +7,7 @@ import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.core.BlockPos
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.ContainerHelper
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.state.BlockState
 import org.agent.hexvoid.blocks.base.BaseContainer
 import org.agent.hexvoid.blocks.base.ContainerSlotDelegate
@@ -47,7 +48,7 @@ class PortalMapperBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity
         super.setChanged()
         val iotaTag = readIotaTag()
         val value = when {
-            iotaTag == null -> PortalMapperItemState.EMPTY
+            iotaTag == null -> if (iotaHolder == null) PortalMapperItemState.EMPTY else PortalMapperItemState.INVALID
             iotaTag.getString("hexcasting:type") == "hexcasting:null" -> PortalMapperItemState.NULL
             iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> PortalMapperItemState.SCENT
             else -> PortalMapperItemState.INVALID

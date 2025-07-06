@@ -1,0 +1,16 @@
+{
+  name: "hexvoid.book.patterns.spells.hexvoid_great_spells",
+  category: "hexcasting:patterns/great_spells",
+  icon: "hexvoid:portal_mapper_full",
+  advancement: "hexcasting:root",
+  pages: [
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexvoid:activate_portal",
+      anchor: "hexvoid:activate_portal",
+      input: "vec, num",
+      output: "",
+      text: "hexvoid.book.patterns.spells.hexvoid_great_spells.activate_portal",
+    },
+  ],
+}

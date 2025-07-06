@@ -7,6 +7,10 @@
             "": "Hexvoid Spells",
             save_scent: "Pushes the scent of reality at your current location to the stack.",
           },
+          hexvoid_great_spells: {
+            "": "Hexvoid Great Spells",
+            activate_portal: "Activates the Imbued Locator Core at the given position, creating a portal medium for the specified duration in ticks. Costs AAAAA"
+          }
         },
       },
     },
@@ -16,6 +20,7 @@
     action: {
       "hexvoid:": {
         save_scent: "Save Reality Scent",
+        activate_portal: "Activate Locator Core"
       },
 
       // use this to add shortened versions of pattern names if the full name won't fit in the ingame book
@@ -34,4 +39,24 @@
       congratulate: "Tell %1$s they're doing a good job!",
     },
   },
+  block: {
+    hexvoid: {
+      portal_mapper_empty: "Empty Locator Core",
+      portal_mapper_cartographer: "Partially Imbued Locator Core (Cartographer)",
+      portal_mapper_sniffer: "Partially Imbued Locator Core (Sniffer)",
+      portal_mapper_full: "Imbued Locator Core",
+      interstitial_stone: "Interstitial Stone",
+      interstitial_cobblestone: "Interstitial Cobblestone",
+      quartz_infused_stone: "Quartz Infused Stone",
+      liquid_quartz: "Liquid Quartz"
+    },
+  },
+  item: {
+    hexvoid: {
+      liquid_quartz_bucket: "Liquid Quartz Bucket"
+    }
+  },
+  itemGroup: {
+    hexvoid: "HexVoid"
+  }
 }
