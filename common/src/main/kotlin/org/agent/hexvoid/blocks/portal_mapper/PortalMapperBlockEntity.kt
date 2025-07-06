@@ -48,9 +48,9 @@ class PortalMapperBlockEntity(pos: BlockPos, state: BlockState) : HexBlockEntity
         val iotaTag = readIotaTag()
         val value = when {
             iotaTag == null -> PortalMapperItemState.EMPTY
-            iotaTag.getString("hexcasting:type") == "hexcasting:null" -> PortalMapperItemState.FULL_NULL
-            iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> PortalMapperItemState.FULL_SCENT
-            else -> PortalMapperItemState.EMPTY
+            iotaTag.getString("hexcasting:type") == "hexcasting:null" -> PortalMapperItemState.NULL
+            iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> PortalMapperItemState.SCENT
+            else -> PortalMapperItemState.INVALID
         }
         level?.setBlockAndUpdate(blockPos, blockState.setValue(ITEM_STATE, value))
     }

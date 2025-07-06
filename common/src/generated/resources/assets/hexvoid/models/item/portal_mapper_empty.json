@@ -7,15 +7,21 @@
       }
     },
     {
-      "model": "hexvoid:block/portal_mapper_empty_full_scent",
+      "model": "hexvoid:block/portal_mapper_empty_scent",
+      "predicate": {
+        "hexvoid:item_state": 0.25
+      }
+    },
+    {
+      "model": "hexvoid:block/portal_mapper_empty_null",
       "predicate": {
         "hexvoid:item_state": 0.5
       }
     },
     {
-      "model": "hexvoid:block/portal_mapper_empty_full_null",
+      "model": "hexvoid:block/portal_mapper_empty_invalid",
       "predicate": {
-        "hexvoid:item_state": 1.0
+        "hexvoid:item_state": 0.75
       }
     }
   ]

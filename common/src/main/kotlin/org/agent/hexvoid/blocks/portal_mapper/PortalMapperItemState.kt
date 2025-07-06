@@ -4,8 +4,9 @@ import net.minecraft.util.StringRepresentable
 
 enum class PortalMapperItemState(val stateName: String) : StringRepresentable {
     EMPTY("empty"),
-    FULL_SCENT("full_scent"),
-    FULL_NULL("full_null");
+    SCENT("scent"),
+    NULL("null"),
+    INVALID("invalid");
 
     override fun getSerializedName() = this.stateName
 

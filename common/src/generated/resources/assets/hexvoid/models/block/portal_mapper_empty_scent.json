@@ -6,7 +6,7 @@
     "north": "hexvoid:block/portal_mapper_empty/north",
     "particle": "hexvoid:block/portal_mapper_empty/north",
     "south": "hexvoid:block/portal_mapper_empty/south",
-    "up": "hexvoid:block/portal_mapper_empty/up_full_null",
+    "up": "hexvoid:block/portal_mapper_empty/up_scent",
     "west": "hexvoid:block/portal_mapper_empty/west"
   }
 }

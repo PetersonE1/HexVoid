@@ -7,15 +7,21 @@
       }
     },
     {
-      "model": "hexvoid:block/portal_mapper_cartographer_full_scent",
+      "model": "hexvoid:block/portal_mapper_cartographer_scent",
+      "predicate": {
+        "hexvoid:item_state": 0.25
+      }
+    },
+    {
+      "model": "hexvoid:block/portal_mapper_cartographer_null",
       "predicate": {
         "hexvoid:item_state": 0.5
       }
     },
     {
-      "model": "hexvoid:block/portal_mapper_cartographer_full_null",
+      "model": "hexvoid:block/portal_mapper_cartographer_invalid",
       "predicate": {
-        "hexvoid:item_state": 1.0
+        "hexvoid:item_state": 0.75
       }
     }
   ]

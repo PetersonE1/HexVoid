@@ -18,6 +18,8 @@ import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import org.agent.hexvoid.Hexvoid
+import org.agent.hexvoid.blocks.portal_mapper.PortalMapperItemState
+import org.agent.hexvoid.utils.asItemPredicate
 import org.agent.hexvoid.utils.styledHoverName
 
 class PortalMapperBlockItem(block: Block, properties: Properties) :
@@ -68,13 +70,13 @@ class PortalMapperBlockItem(block: Block, properties: Properties) :
                 if (stack.hasIotaStack) {
                     val iotaTag = stack.getIotaStack().second?.readIotaTag(stack)
                     when {
-                        iotaTag == null -> 0.0f
-                        iotaTag.getString("hexcasting:type") == "hexcasting:null" -> 1.0f
-                        iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> 0.5f
-                        else -> 0.0f
+                        iotaTag == null -> PortalMapperItemState.EMPTY.asItemPredicate
+                        iotaTag.getString("hexcasting:type") == "hexcasting:null" -> PortalMapperItemState.EMPTY.asItemPredicate
+                        iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> PortalMapperItemState.SCENT.asItemPredicate
+                        else -> PortalMapperItemState.INVALID.asItemPredicate
                     }
                 } else {
-                    0.0f
+                    PortalMapperItemState.EMPTY.asItemPredicate
                 }
             }
             _cache

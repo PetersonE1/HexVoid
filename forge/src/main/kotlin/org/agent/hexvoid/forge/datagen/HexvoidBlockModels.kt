@@ -145,7 +145,7 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         getVariantBuilder(entry.value).also { builder ->
             val path = entry.id.path
             val itemModel = itemModels().getBuilder(path)
-            for (stateName in listOf("empty", "full_scent", "full_null")) {
+            for (stateName in listOf("empty", "scent", "null", "invalid")) {
                 val model = models()
                     .cube(
                         "${path}_$stateName",
