@@ -7,13 +7,24 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getBlockPos
 import at.petrak.hexcasting.api.casting.getInt
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadBlock
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadItem
+import at.petrak.hexcasting.api.casting.mishaps.MishapInternalException
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
+import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidOperatorArgs
+import at.petrak.hexcasting.api.casting.mishaps.MishapLocationInWrongDimension
+import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import at.petrak.hexcasting.api.misc.MediaConstants
+import at.petrak.hexcasting.api.mod.HexConfig
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import net.minecraft.core.BlockPos
 import net.minecraft.world.level.block.state.BlockState
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
+import org.agent.hexvoid.casting.iotas.RealityScentIota
 import org.agent.hexvoid.registry.HexvoidBlocks
+import org.agent.hexvoid.world.dimension.HexvoidDimensions
 
 object OpActivatePortal : SpellAction {
     override val argc = 2
@@ -24,10 +35,24 @@ object OpActivatePortal : SpellAction {
         env.assertPosInRange(target)
 
         val state = env.world.getBlockState(target)
-        if (state.block.name != HexvoidBlocks.PORTAL_MAPPER_FULL.block.name)
+        if (!state.`is`(HexvoidBlocks.PORTAL_MAPPER_FULL.block))
             throw MishapBadBlock(target, "block.hexvoid.portal_mapper_full".asTranslatedComponent)
 
-        // TODO: check for iota storage and mishap if invalid/no iota stored (it already won't do anything because of how the block's function works, but I want to mishap)
+        val blockEntity = PortalMapperBlock.getBlockEntity(env.world, target) ?: throw MishapInternalException(IllegalStateException("Block entity not found!"))
+        val iota = blockEntity.readIota(env.world)
+        if (iota == null)
+            throw MishapBadBlock(target, "error.hexvoid.missing_iota".asTranslatedComponent)
+        if (iota !is RealityScentIota && iota !is NullIota)
+            throw MishapInvalidIota(iota, -1, "error.hexvoid.invalid_iota".asTranslatedComponent)
+
+        val targetDim = when (iota) {
+            is RealityScentIota -> iota.globalPos.dimension()
+            is NullIota -> HexvoidDimensions.INTERSTITIA_LEVEL_KEY
+            else -> env.world.dimension()
+        }
+
+        if (!HexConfig.server().canTeleportInThisDimension(targetDim) || !HexConfig.server().canTeleportInThisDimension(env.world.dimension()))
+            throw MishapLocationInWrongDimension(targetDim.location())
 
         return SpellAction.Result(
             Spell(state, duration, target),

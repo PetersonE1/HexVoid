@@ -32,36 +32,6 @@ class LiquidQuartzBlock(fluid: FlowingFluid, properties: Properties) : LiquidBlo
         return true
     }
 
-    private var _portalActive: Boolean = false
-    private var _targetPos: GlobalPos? = null
-
-    override fun tick(state: BlockState, level: ServerLevel, pos: BlockPos, random: RandomSource) {
-        deactivatePortal()
-    }
-
-    override fun onPlace(state: BlockState, level: Level, pos: BlockPos, oldState: BlockState, movedByPiston: Boolean) {
-        super.onPlace(state, level, pos, oldState, movedByPiston)
-        _portalActive = false
-    }
-
-    fun activatePortal(duration: Int, level: ServerLevel, pos: BlockPos, target: GlobalPos?) {
-        if (!_portalActive) {
-            _portalActive = true
-            _targetPos = target
-            level.scheduleTick(pos, this, duration)
-        }
-    }
-
-    fun deactivatePortal() {
-        _portalActive = false
-    }
-
-    fun teleport(player: ServerPlayer) {
-        if (_portalActive) {
-            InterstitiaTeleport.teleport(player, _targetPos)
-        }
-    }
-
     companion object {
         val ID = Hexvoid.id("liquid_quartz")
         val SETTINGS: Properties = Properties.copy(Blocks.WATER).noOcclusion()

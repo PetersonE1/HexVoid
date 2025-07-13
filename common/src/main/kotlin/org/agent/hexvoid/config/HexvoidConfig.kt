@@ -70,16 +70,22 @@ object HexvoidConfig {
     @Config(name = "server")
     class ServerConfig : ConfigData {
         @Tooltip
-        var serverConfigOption: Int = 64
+        var portalRecursionDepth: Int = 512
+            private set
+
+        @Tooltip
+        var portalLeapDistance: Int = 1
             private set
 
         fun encode(buf: FriendlyByteBuf) {
-            buf.writeInt(serverConfigOption)
+            buf.writeInt(portalRecursionDepth)
+            buf.writeInt(portalLeapDistance)
         }
 
         companion object {
             fun decode(buf: FriendlyByteBuf) = ServerConfig().apply {
-                serverConfigOption = buf.readInt()
+                portalRecursionDepth = buf.readInt()
+                portalLeapDistance = buf.readInt()
             }
         }
     }

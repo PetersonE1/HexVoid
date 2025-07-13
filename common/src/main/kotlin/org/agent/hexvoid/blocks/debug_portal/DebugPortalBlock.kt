@@ -44,6 +44,6 @@ class DebugPortalBlock(properties: Properties) : HorizontalBlock(properties) {
             else -> return InteractionResult.SUCCESS
         }
 
-        return if (InterstitiaTeleport.teleport(player as ServerPlayer, globalPos)) InteractionResult.SUCCESS else InteractionResult.FAIL
+        return if (InterstitiaTeleport.teleportPlayer(player as ServerPlayer, globalPos)) InteractionResult.SUCCESS else InteractionResult.FAIL
     }
 }

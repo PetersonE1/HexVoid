@@ -1,13 +1,16 @@
 package org.agent.hexvoid.blocks.portal_mapper
 
 import at.petrak.hexcasting.api.casting.iota.NullIota
+import at.petrak.hexcasting.api.mod.HexConfig
 import at.petrak.hexcasting.xplat.IXplatAbstractions
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.core.GlobalPos
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.util.RandomSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
+import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.item.ItemEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
@@ -18,6 +21,9 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.LiquidBlock
 import net.minecraft.world.level.block.RenderShape
 import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.world.level.block.entity.BlockEntityTicker
+import net.minecraft.world.level.block.entity.BlockEntityType
+import net.minecraft.world.level.block.entity.TheEndGatewayBlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
@@ -26,14 +32,17 @@ import net.minecraft.world.level.block.state.properties.EnumProperty
 import net.minecraft.world.level.storage.loot.LootParams
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import net.minecraft.world.phys.BlockHitResult
+import org.agent.hexvoid.blockEntity.TickableBlockEntity
 import org.agent.hexvoid.blocks.debug_portal.HorizontalEntityBlock
 import org.agent.hexvoid.blocks.fluids.liquid_quartz.LiquidQuartzBlock
 import org.agent.hexvoid.casting.iotas.RealityScentIota
+import org.agent.hexvoid.functionality.InterstitiaTeleport
 import org.agent.hexvoid.registry.HexvoidBlocks
+import org.agent.hexvoid.world.dimension.HexvoidDimensions
 
 @Suppress("OVERRIDE_DEPRECATION")
 class PortalMapperBlock(properties: Properties) : HorizontalEntityBlock(properties) {
-    init {
+        init {
         registerDefaultState(
             getStateDefinition().any()
                 .setValue(ITEM_STATE, PortalMapperItemState.EMPTY)
@@ -121,15 +130,35 @@ class PortalMapperBlock(properties: Properties) : HorizontalEntityBlock(properti
 
     fun activatePortal(duration: Int, level: ServerLevel, pos: BlockPos) {
         val blockEntity = getBlockEntity(level, pos) ?: return
-        val iota = blockEntity.readIota(level)
-        val globalPos = when (iota) {
+        blockEntity.activatePortal(level.gameTime + duration)
+    }
+
+    fun teleport(entity: Entity, level: ServerLevel, pos: BlockPos) {
+        if (!TheEndGatewayBlockEntity.canEntityTeleport(entity))
+            return
+
+        val blockEntity = getBlockEntity(level, pos) ?: return
+
+        if (!blockEntity.portalActive)
+            return
+
+        val iota = blockEntity.readIota(level) ?: return
+        val target = when (iota) {
             is RealityScentIota -> iota.globalPos
             is NullIota -> null
             else -> return
         }
 
-        val block = level.getBlockState(pos.below()).block as LiquidQuartzBlock
-        block.activatePortal(duration, level, pos.below(), globalPos)
+        if (InterstitiaTeleport.teleport(entity, target, level))
+            entity.setPortalCooldown()
+    }
+
+    override fun <T : BlockEntity?> getTicker(
+        level: Level,
+        state: BlockState,
+        blockEntityType: BlockEntityType<T?>
+    ): BlockEntityTicker<T?>? {
+        return TickableBlockEntity.getTickerHelper(level)
     }
 
     companion object {

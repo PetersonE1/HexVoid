@@ -63,5 +63,11 @@
   },
   itemGroup: {
     hexvoid: "HexVoid"
+  },
+  error: {
+    hexvoid: {
+      missing_iota: "stored iota in slot",
+      invalid_iota: "Reality Scent"
+    }
   }
 }

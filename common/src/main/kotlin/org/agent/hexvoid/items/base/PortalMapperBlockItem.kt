@@ -25,8 +25,6 @@ import org.agent.hexvoid.utils.styledHoverName
 class PortalMapperBlockItem(block: Block, properties: Properties) :
     BlockItem(block, properties), IotaHolderItem, ItemPredicateProvider
 {
-    private var _cache: Float = -1.0f
-
     override fun readIotaTag(stack: ItemStack): CompoundTag? {
         val (iotaStack, iotaHolder) = stack.getIotaStack()
         return iotaHolder?.readIotaTag(iotaStack)
@@ -48,7 +46,6 @@ class PortalMapperBlockItem(block: Block, properties: Properties) :
             iotaHolder.writeDatum(iotaStack, iota)
             stack.putIotaStack(iotaStack)
         }
-        _cache = -1.0f
     }
 
     override fun appendHoverText(
@@ -66,20 +63,17 @@ class PortalMapperBlockItem(block: Block, properties: Properties) :
 
     override fun getModelPredicates() = listOf(
         ModelPredicateEntry(ITEM_STATE) { stack, _, _, _ ->
-            if (_cache < 0) { _cache =
-                if (stack.hasIotaStack) {
-                    val iotaTag = stack.getIotaStack().second?.readIotaTag(stack)
-                    when {
-                        iotaTag == null -> PortalMapperItemState.EMPTY.asItemPredicate
-                        iotaTag.getString("hexcasting:type") == "hexcasting:null" -> PortalMapperItemState.EMPTY.asItemPredicate
-                        iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> PortalMapperItemState.SCENT.asItemPredicate
-                        else -> PortalMapperItemState.INVALID.asItemPredicate
-                    }
-                } else {
-                    PortalMapperItemState.EMPTY.asItemPredicate
+            if (stack.hasIotaStack) {
+                val iotaTag = stack.getIotaStack().second?.readIotaTag(stack)
+                when {
+                    iotaTag == null -> PortalMapperItemState.EMPTY.asItemPredicate
+                    iotaTag.getString("hexcasting:type") == "hexcasting:null" -> PortalMapperItemState.EMPTY.asItemPredicate
+                    iotaTag.getString("hexcasting:type") == "hexvoid:reality_scent" -> PortalMapperItemState.SCENT.asItemPredicate
+                    else -> PortalMapperItemState.INVALID.asItemPredicate
                 }
+            } else {
+                PortalMapperItemState.EMPTY.asItemPredicate
             }
-            _cache
         }
     )
 
