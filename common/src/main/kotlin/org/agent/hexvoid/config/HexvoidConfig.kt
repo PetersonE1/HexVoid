@@ -74,7 +74,7 @@ object HexvoidConfig {
             private set
 
         @Tooltip
-        var portalLeapDistance: Int = 1
+        var portalLeapDistance: Int = 3
             private set
 
         fun encode(buf: FriendlyByteBuf) {

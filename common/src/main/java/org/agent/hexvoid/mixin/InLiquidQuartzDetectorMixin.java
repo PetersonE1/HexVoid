@@ -47,6 +47,7 @@ public abstract class InLiquidQuartzDetectorMixin {
                 var config = HexvoidConfig.getServer();
                 BlockPos pos = hexVoid$searchForPortal(self.blockPosition(), (ServerLevel)this.level,
                         0, 0, config.getPortalRecursionDepth(), config.getPortalLeapDistance());
+                System.out.println(pos); // TODO: FIX DEBUG ERROR
                 if (pos != null) {
                     PortalMapperBlock portal = (PortalMapperBlock) level.getBlockState(pos).getBlock();
                     portal.teleport(self, (ServerLevel)level, pos);
@@ -67,8 +68,9 @@ public abstract class InLiquidQuartzDetectorMixin {
         if (state.is(HexvoidBlocks.PORTAL_MAPPER_FULL.getBlock()))
             return pos;
 
-        if (depth > MAX_DEPTH)
+        if (depth > MAX_DEPTH) {
             return null;
+        }
 
         if (!state.is(HexvoidBlocks.LIQUID_QUARTZ_BLOCK.getValue())) {
             if (jumpDepth < MAX_JUMP_DEPTH) {
@@ -79,6 +81,7 @@ public abstract class InLiquidQuartzDetectorMixin {
             }
         }
 
+        // Failing under certain conditions. Works when the portal is north/south of entry position. If call order is swapped with east/west, so does the error behavior.
         BlockPos newPos = hexVoid$searchForPortal(pos.above(), level, depth+1, jumpDepth, MAX_DEPTH, MAX_JUMP_DEPTH);
         if (newPos == null) newPos = hexVoid$searchForPortal(pos.below(), level, depth+1, jumpDepth, MAX_DEPTH, MAX_JUMP_DEPTH);
         if (newPos == null) newPos = hexVoid$searchForPortal(pos.north(), level, depth+1, jumpDepth, MAX_DEPTH, MAX_JUMP_DEPTH);
