@@ -19,9 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Mixin(Entity.class)
 public abstract class InLiquidQuartzDetectorMixin {
@@ -32,7 +30,7 @@ public abstract class InLiquidQuartzDetectorMixin {
     @Shadow private BlockPos blockPosition;
 
     @Unique
-    private final List<BlockPos> hexVoid$checkedPositions = new ArrayList<>();
+    private final Map<BlockPos, Integer> hexVoid$checkedPositions = new HashMap<>();
 
     @Unique
     private static final TagKey<Fluid> hexVoid$LiquidQuartzTag = HexvoidFluidTags.Companion.getLIQUID_QUARTZ();
@@ -47,7 +45,6 @@ public abstract class InLiquidQuartzDetectorMixin {
                 var config = HexvoidConfig.getServer();
                 BlockPos pos = hexVoid$searchForPortal(self.blockPosition(), (ServerLevel)this.level,
                         0, 0, config.getPortalRecursionDepth(), config.getPortalLeapDistance());
-                System.out.println(pos); // TODO: FIX DEBUG ERROR
                 if (pos != null) {
                     PortalMapperBlock portal = (PortalMapperBlock) level.getBlockState(pos).getBlock();
                     portal.teleport(self, (ServerLevel)level, pos);
@@ -59,9 +56,14 @@ public abstract class InLiquidQuartzDetectorMixin {
 
     @Unique
     private BlockPos hexVoid$searchForPortal(BlockPos pos, ServerLevel level, int depth, int jumpDepth, int MAX_DEPTH, int MAX_JUMP_DEPTH) {
-        if (hexVoid$checkedPositions.contains(pos))
-            return null;
-        hexVoid$checkedPositions.add(pos);
+        var value = hexVoid$checkedPositions.getOrDefault(pos, null);
+        if (value != null) {
+            if (value <= jumpDepth) {
+                return null;
+            }
+            hexVoid$checkedPositions.put(pos, jumpDepth);
+        }
+        hexVoid$checkedPositions.put(pos, jumpDepth);
 
         BlockState state = level.getBlockState(pos);
 
@@ -81,7 +83,6 @@ public abstract class InLiquidQuartzDetectorMixin {
             }
         }
 
-        // Failing under certain conditions. Works when the portal is north/south of entry position. If call order is swapped with east/west, so does the error behavior.
         BlockPos newPos = hexVoid$searchForPortal(pos.above(), level, depth+1, jumpDepth, MAX_DEPTH, MAX_JUMP_DEPTH);
         if (newPos == null) newPos = hexVoid$searchForPortal(pos.below(), level, depth+1, jumpDepth, MAX_DEPTH, MAX_JUMP_DEPTH);
         if (newPos == null) newPos = hexVoid$searchForPortal(pos.north(), level, depth+1, jumpDepth, MAX_DEPTH, MAX_JUMP_DEPTH);
@@ -93,7 +94,7 @@ public abstract class InLiquidQuartzDetectorMixin {
     }
 
     @Unique
-    public List<BlockPos> hexVoid$getCheckedPositions() {
+    public Map<BlockPos, Integer> hexVoid$getCheckedPositions() {
         return hexVoid$checkedPositions;
     }
 }
