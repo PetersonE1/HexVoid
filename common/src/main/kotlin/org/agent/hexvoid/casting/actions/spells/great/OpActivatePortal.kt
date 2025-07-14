@@ -25,6 +25,7 @@ import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
 import org.agent.hexvoid.casting.iotas.RealityScentIota
 import org.agent.hexvoid.registry.HexvoidBlocks
 import org.agent.hexvoid.world.dimension.HexvoidDimensions
+import kotlin.math.pow
 
 object OpActivatePortal : SpellAction {
     override val argc = 2
@@ -54,9 +55,13 @@ object OpActivatePortal : SpellAction {
         if (!HexConfig.server().canTeleportInThisDimension(targetDim) || !HexConfig.server().canTeleportInThisDimension(env.world.dimension()))
             throw MishapLocationInWrongDimension(targetDim.location())
 
+        val baseCost = (if (targetDim == HexvoidDimensions.INTERSTITIA_LEVEL_KEY) 5 else
+            (if (targetDim == env.world.dimension()) 10 else 15)) * MediaConstants.CRYSTAL_UNIT
+        val durationCost = (duration / (20.0 * 60.0)).pow(2.0).toInt() * MediaConstants.CRYSTAL_UNIT
+
         return SpellAction.Result(
             Spell(state, duration, target),
-            MediaConstants.DUST_UNIT, // TODO: cost calculations (costs more across dimensions, less if null, scaled by duration)
+            baseCost + durationCost,
             listOf(ParticleSpray.Companion.burst(target.center, 1.0))
         )
     }
