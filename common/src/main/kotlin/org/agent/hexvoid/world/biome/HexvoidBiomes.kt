@@ -9,6 +9,7 @@ import net.minecraft.sounds.Musics
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.level.biome.*
 import org.agent.hexvoid.Hexvoid
+import org.agent.hexvoid.registry.HexvoidSoundEvents
 
 class HexvoidBiomes {
     companion object {
@@ -48,6 +49,7 @@ class HexvoidBiomes {
                     .foliageColorOverride(0x808080)
                     .fogColor(0x0a0a0a)
                     .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                    .ambientLoopSound(HexvoidSoundEvents.AMBIENT_INTERSTITIAL_WASTES_LOOP.holder)
                     .backgroundMusic(Musics.UNDER_WATER).build()
                 ).build()
         }

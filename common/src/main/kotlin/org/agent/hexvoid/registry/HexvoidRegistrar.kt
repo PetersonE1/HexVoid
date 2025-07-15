@@ -3,6 +3,7 @@ package org.agent.hexvoid.registry
 import dev.architectury.platform.Platform
 import org.agent.hexvoid.Hexvoid
 import net.fabricmc.api.EnvType
+import net.minecraft.core.Holder
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
@@ -57,6 +58,8 @@ abstract class HexvoidRegistrar<T : Any>(
 
         /** Do not access until the mod has been initialized! */
         val value by lazyValue
+
+        val holder get(): Holder<T> = Holder.direct(value)
 
         override fun equals(other: Any?) = when (other) {
             is HexvoidRegistrar<*>.Entry<*> -> key.registry().equals(other.key.registry()) && id.equals(other.id)

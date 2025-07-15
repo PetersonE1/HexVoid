@@ -1,0 +1,11 @@
+{
+  "ambient.interstitial_wastes.loop": {
+    "sounds": [
+      {
+        "name": "hexvoid:ambient/interstitial_wastes/loop",
+        "stream": true
+      }
+    ],
+    "subtitle": "sound.hexvoid.ambient.interstitial_wastes.loop"
+  }
+}

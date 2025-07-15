@@ -8,6 +8,9 @@
   },
   "downfall": 0.4,
   "effects": {
+    "ambient_sound": {
+      "sound_id": "hexvoid:ambient.interstitial_wastes.loop"
+    },
     "fog_color": 657930,
     "foliage_color": 8421504,
     "grass_color": 5263440,

@@ -13,6 +13,7 @@ import org.agent.hexvoid.forge.datagen.HexvoidBlockLootTables
 import org.agent.hexvoid.forge.datagen.HexvoidBlockModels
 import org.agent.hexvoid.forge.datagen.HexvoidItemModels
 import org.agent.hexvoid.forge.datagen.HexvoidRecipes
+import org.agent.hexvoid.forge.datagen.HexvoidSoundFiles
 import org.agent.hexvoid.forge.datagen.HexvoidWorldGenProvider
 import org.agent.hexvoid.forge.datagen.tags.HexvoidBlockTagProvider
 import org.agent.hexvoid.forge.datagen.tags.HexvoidFluidTagProvider
@@ -32,6 +33,7 @@ class HexvoidForge {
     private fun gatherData(event: GatherDataEvent) {
         event.apply {
             val efh = existingFileHelper
+            addProvider(includeClient()) { HexvoidSoundFiles(it, efh) }
             addProvider(includeServer()) { HexvoidWorldGenProvider(it, lookupProvider) }
             addProvider(includeClient()) { HexvoidBlockModels(it, efh) }
             addProvider(includeClient()) { HexvoidItemModels(it, efh) }

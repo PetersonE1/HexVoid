@@ -69,5 +69,14 @@
       missing_iota: "stored iota in slot",
       invalid_iota: "Reality Scent"
     }
+  },
+  sound: {
+    hexvoid: {
+      ambient: {
+        interstitial_wastes: {
+          loop: "Hollow Drone"
+        }
+      }
+    }
   }
 }

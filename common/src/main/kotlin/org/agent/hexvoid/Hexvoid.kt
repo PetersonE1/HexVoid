@@ -12,6 +12,7 @@ import org.agent.hexvoid.registry.HexvoidCreativeTabs
 import org.agent.hexvoid.registry.HexvoidFluids
 import org.agent.hexvoid.registry.HexvoidIotaTypes
 import org.agent.hexvoid.registry.HexvoidItems
+import org.agent.hexvoid.registry.HexvoidSoundEvents
 
 object Hexvoid {
     const val MODID = "hexvoid"
@@ -31,7 +32,8 @@ object Hexvoid {
             HexvoidItems,
             HexvoidCreativeTabs,
             HexvoidActions,
-            HexvoidIotaTypes
+            HexvoidIotaTypes,
+            HexvoidSoundEvents
         )
         HexvoidNetworking.init()
     }
