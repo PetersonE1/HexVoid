@@ -37,13 +37,6 @@
       },
     },
   },
-
-  // TODO: Remove at some point, but I'm leaving it here for now for reference
-  text: {
-    hexvoid: {
-      congratulate: "Tell %1$s they're doing a good job!",
-    },
-  },
   block: {
     hexvoid: {
       portal_mapper_empty: "Empty Locator Core",
