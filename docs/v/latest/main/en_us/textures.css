@@ -1261,14 +1261,14 @@
   .texture-hexvoid-textures-block-liquid_quartz-liquid_quartz_flow-png {
     animation: texture-hexvoid-textures-block-liquid_quartz-liquid_quartz_flow-png 0.0s linear infinite;
     background-size: 100%;
-    background-image: url("https://raw.githubusercontent.com/PetersonE1/HexVoid/7bd63a5806b65ecab7e527ad09ee742e96a00ff8/common/src/main/resources/assets/hexvoid/textures/block/liquid_quartz/liquid_quartz_flow.png");
+    background-image: url("https://raw.githubusercontent.com/PetersonE1/HexVoid/d7de0a016530c44f8a05c7073964a89c07696912/common/src/main/resources/assets/hexvoid/textures/block/liquid_quartz/liquid_quartz_flow.png");
   }
   @keyframes texture-hexvoid-textures-block-liquid_quartz-liquid_quartz_flow-png {
   }
   .texture-hexvoid-textures-block-liquid_quartz-liquid_quartz_still-png {
     animation: texture-hexvoid-textures-block-liquid_quartz-liquid_quartz_still-png 0.0s linear infinite;
     background-size: 100%;
-    background-image: url("https://raw.githubusercontent.com/PetersonE1/HexVoid/7bd63a5806b65ecab7e527ad09ee742e96a00ff8/common/src/main/resources/assets/hexvoid/textures/block/liquid_quartz/liquid_quartz_still.png");
+    background-image: url("https://raw.githubusercontent.com/PetersonE1/HexVoid/d7de0a016530c44f8a05c7073964a89c07696912/common/src/main/resources/assets/hexvoid/textures/block/liquid_quartz/liquid_quartz_still.png");
   }
   @keyframes texture-hexvoid-textures-block-liquid_quartz-liquid_quartz_still-png {
   }
