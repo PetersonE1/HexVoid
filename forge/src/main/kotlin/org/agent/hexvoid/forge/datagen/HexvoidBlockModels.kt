@@ -1,17 +1,15 @@
 package org.agent.hexvoid.forge.datagen
 
 import at.petrak.paucal.api.forge.datagen.PaucalBlockStateAndModelProvider
-import net.minecraft.client.renderer.block.model.BlockModel
 import net.minecraft.core.Direction
 import net.minecraft.data.PackOutput
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.level.block.state.properties.BlockStateProperties
+import net.minecraft.world.level.block.RotatedPillarBlock
 import net.minecraftforge.client.model.generators.BlockModelBuilder
-import net.minecraftforge.client.model.generators.ConfiguredModel
 import net.minecraftforge.client.model.generators.ModelFile
 import net.minecraftforge.common.data.ExistingFileHelper
+import net.minecraftforge.registries.ForgeRegistries
 import org.agent.hexvoid.Hexvoid
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperItemState
@@ -19,7 +17,6 @@ import org.agent.hexvoid.items.base.PortalMapperBlockItem
 import org.agent.hexvoid.registry.HexvoidBlocks
 import org.agent.hexvoid.registry.RegistrarEntry
 import org.agent.hexvoid.utils.asItemPredicate
-import java.util.function.Function
 
 @Suppress("SameParameterValue")
 class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBlockStateAndModelProvider(output, Hexvoid.MODID, efh) {
@@ -32,6 +29,7 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_SNIFFER)
         portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_FULL)
         easyBlockAndItem(HexvoidBlocks.QUARTZ_INFUSED_STONE, true)
+        easyAxisBlockAndItem(HexvoidBlocks.CARNIVOROUS_LOG)
     }
 
     private fun easyHorizontalBlockAndItem(entry: RegistrarEntry<Block>) {
@@ -98,6 +96,13 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         }
     }
 
+    private fun easyAxisBlockAndItem(entry: RegistrarEntry<Block>) {
+        val block = entry.value as RotatedPillarBlock
+        val side = modLoc("block/${entry.id.path}/side")
+        val end = modLoc("block/${entry.id.path}/end")
+        axisBlockAndItem(block, side, end)
+    }
+
     private fun horizontalBlockAndItem(
         entry: RegistrarEntry<Block>,
         builder: (ResourceLocation) -> BlockModelBuilder,
@@ -119,6 +124,20 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         } else {
             simpleBlockWithItem(entry.value, model)
         }
+    }
+
+    private fun axisBlockAndItem(
+        block: RotatedPillarBlock,
+        side: ResourceLocation,
+        end: ResourceLocation,
+    ) {
+        val verticalModel = models().cubeColumn(name(block), side, end)
+        axisBlock(
+            block,
+            verticalModel,
+            models().cubeColumnHorizontal(name(block) + "_horizontal", side, end)
+        )
+        simpleBlockItem(block, verticalModel)
     }
 
     private fun randomRotBlock(block: Block, model: ModelFile) {
@@ -154,7 +173,8 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
                         modLoc("block/${path}/north"),
                         modLoc("block/${path}/south"),
                         modLoc("block/${path}/east"),
-                        modLoc("block/${path}/west"),).texture("particle", modLoc("block/${path}/north"))
+                        modLoc("block/${path}/west"),
+                    ).texture("particle", modLoc("block/${path}/north"))
 
                 itemModel.override()
                     .predicate(PortalMapperBlockItem.ITEM_STATE, PortalMapperItemState.valueOf(stateName.uppercase()).asItemPredicate)
@@ -172,5 +192,9 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
                 }
             }
         }
+    }
+
+    private fun name(block: Block): String? {
+        return ForgeRegistries.BLOCKS.getKey(block)?.path
     }
 }

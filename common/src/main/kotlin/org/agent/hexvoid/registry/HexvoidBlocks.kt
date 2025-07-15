@@ -6,6 +6,7 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.RotatedPillarBlock
 import net.minecraft.world.level.material.PushReaction
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
 import org.agent.hexvoid.blocks.debug_portal.HorizontalBlock
@@ -66,6 +67,11 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
 
     @JvmField
     val LIQUID_QUARTZ_BLOCK = register("liquid_quartz") { LiquidQuartzBlock.INSTANCE }
+
+    @JvmField
+    val CARNIVOROUS_LOG = blockItem("carnivorous_log", HexvoidItems.props) {
+        RotatedPillarBlock(BlockProperties.copy(Blocks.OAK_LOG))
+    }
 
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)
 

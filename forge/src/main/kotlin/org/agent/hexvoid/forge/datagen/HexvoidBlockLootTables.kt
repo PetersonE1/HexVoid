@@ -19,6 +19,7 @@ class HexvoidBlockLootTables : BlockLootSubProvider(setOf(), FeatureFlags.DEFAUL
         dropSelf(HexvoidBlocks.PORTAL_MAPPER_FULL.value)
         dropSelf(HexvoidBlocks.QUARTZ_INFUSED_STONE.value)
         dropSelf(HexvoidBlocks.LIQUID_QUARTZ_BLOCK.value) // this doesn't make sense to me and something must be wrong, but datagen won't run without a loot pool
+        dropSelf(HexvoidBlocks.CARNIVOROUS_LOG.value)
     }
 
     override fun getKnownBlocks(): MutableIterable<Block> {

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "hexvoid:block/carnivorous_log/end",
+    "side": "hexvoid:block/carnivorous_log/side"
+  }
+}
