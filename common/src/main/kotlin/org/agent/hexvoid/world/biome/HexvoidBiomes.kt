@@ -4,14 +4,10 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BiomeDefaultFeatures
 import net.minecraft.data.worldgen.BootstapContext
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.sounds.Music
 import net.minecraft.sounds.Musics
-import net.minecraft.world.level.biome.AmbientMoodSettings
-import net.minecraft.world.level.biome.Biome
-import net.minecraft.world.level.biome.BiomeGenerationSettings
-import net.minecraft.world.level.biome.BiomeSpecialEffects
-import net.minecraft.world.level.biome.MobSpawnSettings
+import net.minecraft.sounds.SoundEvents
+import net.minecraft.world.level.biome.*
 import org.agent.hexvoid.Hexvoid
 
 class HexvoidBiomes {
@@ -45,12 +41,12 @@ class HexvoidBiomes {
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects(BiomeSpecialEffects.Builder()
-                    .waterColor(0xe82e3b)
-                    .waterFogColor(0xbf1b26)
-                    .skyColor(0x30c918)
-                    .grassColorOverride(0x7f03fc)
-                    .foliageColorOverride(0xd203fc)
-                    .fogColor(0x22a1e6)
+                    .waterColor(0x150216)
+                    .waterFogColor(0x130014)
+                    .skyColor(0x000000)
+                    .grassColorOverride(0x505050)
+                    .foliageColorOverride(0x808080)
+                    .fogColor(0x0a0a0a)
                     .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                     .backgroundMusic(Musics.UNDER_WATER).build()
                 ).build()

@@ -8,9 +8,9 @@
   },
   "downfall": 0.4,
   "effects": {
-    "fog_color": 2269670,
-    "foliage_color": 13763580,
-    "grass_color": 8324092,
+    "fog_color": 657930,
+    "foliage_color": 8421504,
+    "grass_color": 5263440,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -23,9 +23,9 @@
       "replace_current_music": false,
       "sound": "minecraft:music.under_water"
     },
-    "sky_color": 3197208,
-    "water_color": 15216187,
-    "water_fog_color": 12524326
+    "sky_color": 0,
+    "water_color": 1376790,
+    "water_fog_color": 1245204
   },
   "features": [
     [],

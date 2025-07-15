@@ -18,7 +18,7 @@ object HexvoidItems : HexvoidRegistrar<Item>(Registries.ITEM, { BuiltInRegistrie
         ArchitecturyBucketItem(Supplier { return@Supplier HexvoidFluids.LIQUID_QUARTZ.value }, unstackable)
     }
 
-    val props: Item.Properties = Item.Properties().`arch$tab`(HexvoidCreativeTabs.HEX_VOID.key)
+    val props: Properties get() = Properties().`arch$tab`(HexvoidCreativeTabs.HEX_VOID.key)
 
     private val unstackable get() = props.stacksTo(1)
 

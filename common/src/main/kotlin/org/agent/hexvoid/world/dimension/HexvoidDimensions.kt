@@ -46,7 +46,7 @@ class HexvoidDimensions {
                 384, // logicalHeight (portals can't spawn, and chorus fruit won't teleport above this height)
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn (what blocks infinitely burn)
                 BuiltinDimensionTypes.END_EFFECTS, // effectsLocation (sky effects)
-                1.0f, // ambientLight
+                0.0f, // ambientLight
                 DimensionType.MonsterSettings(
                     false, // piglinSafe
                     false, // hasRaids
