@@ -19,7 +19,6 @@ import net.minecraft.world.entity.npc.VillagerProfession
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.block.Blocks
-import org.agent.hexvoid.blocks.crystal.CrystalBlock
 import org.agent.hexvoid.forge.datagen.recipes.builders.DestabilizeRecipeBuilder
 import org.agent.hexvoid.registry.HexvoidBlocks
 import java.util.function.Consumer
@@ -89,28 +88,19 @@ class HexvoidRecipes(out: PackOutput, modid: String) : PaucalRecipeProvider(out,
 
 
         DestabilizeRecipeBuilder(
-            StateIngredientHelper.of(HexvoidBlocks.CRYSTAL.block),
-            HexvoidBlocks.CRYSTAL.block.defaultBlockState().setValue(CrystalBlock.SHEEN, false),
-            MediaConstants.DUST_UNIT
+            StateIngredientHelper.of(HexvoidBlocks.CRYSTAL_SHEEN.block),
+            HexvoidBlocks.CRYSTAL_DULL.block.defaultBlockState(), MediaConstants.DUST_UNIT
         )
             .unlockedBy("enlightenment", enlightenment)
             .save(recipes, modLoc("dullify_crystal"))
 
         DestabilizeRecipeBuilder(
-            StateIngredientHelper.of(Blocks.QUARTZ_BLOCK),
+            StateIngredientHelper.of(HexvoidBlocks.QUARTZ_INFUSED_STONE.block),
             HexvoidBlocks.LIQUID_QUARTZ_BLOCK.value.defaultBlockState(),
             MediaConstants.CRYSTAL_UNIT
         )
             .unlockedBy("enlightenment", enlightenment)
             .save(recipes, modLoc("quartz_block_to_liquid"))
-
-        DestabilizeRecipeBuilder(
-            StateIngredientHelper.of(Blocks.SMOOTH_QUARTZ),
-            HexvoidBlocks.LIQUID_QUARTZ_BLOCK.value.defaultBlockState(),
-            MediaConstants.CRYSTAL_UNIT
-        )
-            .unlockedBy("enlightenment", enlightenment)
-            .save(recipes, modLoc("smooth_quartz_to_liquid"))
     }
 
 }

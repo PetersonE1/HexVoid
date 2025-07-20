@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "hexvoid:block/crystal/dull",
-    "particle": "hexvoid:block/crystal/dull"
+    "all": "hexvoid:block/crystal_dull",
+    "particle": "hexvoid:block/crystal_dull"
   }
 }

@@ -1,12 +1,7 @@
 {
-  "parent": "minecraft:block/cube",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "down": "hexvoid:block/interstitial_stone",
-    "east": "hexvoid:block/interstitial_stone",
-    "north": "hexvoid:block/interstitial_stone",
-    "particle": "hexvoid:block/interstitial_stone",
-    "south": "hexvoid:block/interstitial_stone",
-    "up": "hexvoid:block/interstitial_stone",
-    "west": "hexvoid:block/interstitial_stone"
+    "all": "hexvoid:block/interstitial_stone",
+    "particle": "hexvoid:block/interstitial_stone"
   }
 }

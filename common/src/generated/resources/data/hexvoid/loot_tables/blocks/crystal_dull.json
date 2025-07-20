@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hexvoid:crystal"
+          "name": "hexvoid:crystal_dull"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "hexvoid:blocks/crystal"
+  "random_sequence": "hexvoid:blocks/crystal_dull"
 }

@@ -2,13 +2,10 @@
   "type": "hexvoid:destabilize",
   "blockIn": {
     "type": "block",
-    "block": "hexvoid:crystal"
+    "block": "hexvoid:crystal_sheen"
   },
   "cost": 10000,
   "result": {
-    "name": "hexvoid:crystal",
-    "properties": {
-      "sheen": "false"
-    }
+    "name": "hexvoid:crystal_dull"
   }
 }

@@ -6,11 +6,11 @@
           hexvoid_spells: {
             "": "Hexvoid Spells",
             save_scent: "Pushes the scent of reality at your current location to the stack.", // todo: not a spell
-            destabilize: "Attempts to destabilize the target block. DOCUMENTATION WIP: CAN TARGET QUARTZ, SMOOTH QUARTZ, AND CRYSTAL W/ SHEEN" // todo: documentation
+            destabilize: "Attempts to destabilize the target block. DOCUMENTATION WIP: CAN TARGET QUARTZ INFUSED STONE AND STRIATED CRYSTAL" // todo: documentation
           },
           hexvoid_great_spells: {
             "": "Hexvoid Great Spells",
-            activate_portal: "Activates the Imbued Locator Core at the given position, creating a portal medium for the specified duration in ticks. Costs AAAAA"
+            activate_portal: "Activates the Imbued Locator Core at the given position, creating a portal medium for the specified duration in ticks. Costs 10 charged amethyst if traveling in the same dimension or 15 across dimensions, plus 1 charged amethyst per the minutes active squared."
           }
         },
       },
@@ -50,7 +50,8 @@
       quartz_infused_stone: "Quartz Infused Stone",
       liquid_quartz: "Liquid Quartz",
       carnivorous_log: "Cryatofaia Log",
-      crystal: "Striated Crystal"
+      crystal_sheen: "Striated Crystal",
+      crystal_dull: "Drained Striated Crystal"
     },
   },
   item: {
