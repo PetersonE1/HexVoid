@@ -6,7 +6,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota
 import net.minecraft.core.GlobalPos
 import org.agent.hexvoid.casting.iotas.RealityScentIota
 
-object OpSaveScent : ConstMediaAction {
+object OpSaveScent : ConstMediaAction { // TODO: this should not be in the spell category
     override val argc = 0
 
     override fun execute(args: List<Iota>, env: CastingEnvironment): List<Iota> {

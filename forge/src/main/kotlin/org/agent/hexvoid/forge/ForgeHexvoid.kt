@@ -1,7 +1,6 @@
 package org.agent.hexvoid.forge
 
 import dev.architectury.platform.forge.EventBuses
-import org.agent.hexvoid.Hexvoid
 import net.minecraft.data.DataProvider
 import net.minecraft.data.DataProvider.Factory
 import net.minecraft.data.PackOutput
@@ -9,15 +8,13 @@ import net.minecraft.data.loot.LootTableProvider
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
-import org.agent.hexvoid.forge.datagen.HexvoidBlockLootTables
-import org.agent.hexvoid.forge.datagen.HexvoidBlockModels
-import org.agent.hexvoid.forge.datagen.HexvoidItemModels
-import org.agent.hexvoid.forge.datagen.HexvoidRecipes
-import org.agent.hexvoid.forge.datagen.HexvoidSoundFiles
-import org.agent.hexvoid.forge.datagen.HexvoidWorldGenProvider
+import org.agent.hexvoid.Hexvoid
+import org.agent.hexvoid.forge.datagen.*
+import org.agent.hexvoid.forge.datagen.recipes.HexvoidRecipes
 import org.agent.hexvoid.forge.datagen.tags.HexvoidBlockTagProvider
 import org.agent.hexvoid.forge.datagen.tags.HexvoidFluidTagProvider
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
+
 
 @Mod(Hexvoid.MODID)
 class HexvoidForge {

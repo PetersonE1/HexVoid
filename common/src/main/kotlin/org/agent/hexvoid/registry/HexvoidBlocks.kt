@@ -8,11 +8,12 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.RotatedPillarBlock
 import net.minecraft.world.level.material.PushReaction
+import org.agent.hexvoid.blocks.crystal.CrystalBlock
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
 import org.agent.hexvoid.blocks.debug_portal.HorizontalBlock
 import org.agent.hexvoid.blocks.fluids.liquid_quartz.LiquidQuartzBlock
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
-import org.agent.hexvoid.items.base.PortalMapperBlockItem
+import org.agent.hexvoid.items.PortalMapperBlockItem
 import net.minecraft.world.item.Item.Properties as ItemProperties
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties as BlockProperties
 
@@ -71,6 +72,11 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     @JvmField
     val CARNIVOROUS_LOG = blockItem("carnivorous_log", HexvoidItems.props) {
         RotatedPillarBlock(BlockProperties.copy(Blocks.OAK_LOG))
+    }
+
+    @JvmField
+    val CRYSTAL = blockItem("crystal", HexvoidItems.props) {
+        CrystalBlock(BlockProperties.copy(Blocks.AMETHYST_BLOCK))
     }
 
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)

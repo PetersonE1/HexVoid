@@ -10,7 +10,15 @@
       anchor: "hexvoid:save_scent",
       input: "",
       output: "Reality Scent",
-      text: "hexvoid.book.patterns.spells.hexvoid_spells.save_scent",
+      text: "hexvoid.book.patterns.spells.hexvoid_spells.save_scent", // todo: not a spell
     },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexvoid:destabilize",
+      anchor: "hexvoid:destabilize",
+      input: "vector",
+      output: "",
+      text: "hexvoid.book.patterns.spells.hexvoid_spells.destabilize"
+    }
   ],
 }

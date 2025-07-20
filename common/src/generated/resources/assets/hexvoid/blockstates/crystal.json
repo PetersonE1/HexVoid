@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "sheen=false": {
+      "model": "hexvoid:block/crystal_dull"
+    },
+    "sheen=true": {
+      "model": "hexvoid:block/crystal_sheen"
+    }
+  }
+}

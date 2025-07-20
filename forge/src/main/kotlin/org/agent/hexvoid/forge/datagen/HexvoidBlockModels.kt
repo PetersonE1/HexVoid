@@ -11,9 +11,10 @@ import net.minecraftforge.client.model.generators.ModelFile
 import net.minecraftforge.common.data.ExistingFileHelper
 import net.minecraftforge.registries.ForgeRegistries
 import org.agent.hexvoid.Hexvoid
+import org.agent.hexvoid.blocks.crystal.CrystalBlock
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperBlock
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperItemState
-import org.agent.hexvoid.items.base.PortalMapperBlockItem
+import org.agent.hexvoid.items.PortalMapperBlockItem
 import org.agent.hexvoid.registry.HexvoidBlocks
 import org.agent.hexvoid.registry.RegistrarEntry
 import org.agent.hexvoid.utils.asItemPredicate
@@ -30,6 +31,7 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_FULL)
         easyBlockAndItem(HexvoidBlocks.QUARTZ_INFUSED_STONE, true)
         easyAxisBlockAndItem(HexvoidBlocks.CARNIVOROUS_LOG)
+        crystalBlockAndItem(HexvoidBlocks.CRYSTAL)
     }
 
     private fun easyHorizontalBlockAndItem(entry: RegistrarEntry<Block>) {
@@ -189,6 +191,26 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
                         .rotationY((rotation.toYRot().toInt() + 180) % 360)
                         .modelFile(model)
                         .addModel()
+                }
+            }
+        }
+    }
+
+    private fun crystalBlockAndItem(entry: RegistrarEntry<Block>) {
+        getVariantBuilder(entry.value).also { builder ->
+            val path = entry.id.path
+            for (state in listOf(true, false)) {
+                val stateName = if (state) "sheen" else "dull"
+                val model = models()
+                    .cubeAll("${path}_$stateName", modLoc("block/${path}/$stateName"))
+                    .texture("particle", modLoc("block/${path}/$stateName"))
+                builder.partialState()
+                    .with(CrystalBlock.SHEEN, state)
+                    .modelForState()
+                    .modelFile(model)
+                    .addModel()
+                if (state) {
+                    simpleBlockItem(entry.value, model)
                 }
             }
         }

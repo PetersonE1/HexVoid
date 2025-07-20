@@ -12,6 +12,8 @@ import org.agent.hexvoid.registry.HexvoidCreativeTabs
 import org.agent.hexvoid.registry.HexvoidFluids
 import org.agent.hexvoid.registry.HexvoidIotaTypes
 import org.agent.hexvoid.registry.HexvoidItems
+import org.agent.hexvoid.registry.HexvoidRecipeSerializers
+import org.agent.hexvoid.registry.HexvoidRecipeTypes
 import org.agent.hexvoid.registry.HexvoidSoundEvents
 
 object Hexvoid {
@@ -33,7 +35,9 @@ object Hexvoid {
             HexvoidCreativeTabs,
             HexvoidActions,
             HexvoidIotaTypes,
-            HexvoidSoundEvents
+            HexvoidSoundEvents,
+            HexvoidRecipeSerializers,
+            HexvoidRecipeTypes
         )
         HexvoidNetworking.init()
     }

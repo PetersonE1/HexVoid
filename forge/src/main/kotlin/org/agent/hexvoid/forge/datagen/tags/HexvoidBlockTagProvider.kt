@@ -7,6 +7,7 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
 import net.minecraft.tags.BlockTags
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.Blocks
 import org.agent.hexvoid.registry.HexvoidBlocks
 import java.util.concurrent.CompletableFuture
 

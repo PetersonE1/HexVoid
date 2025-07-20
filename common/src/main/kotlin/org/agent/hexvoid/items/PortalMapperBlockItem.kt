@@ -1,11 +1,10 @@
-package org.agent.hexvoid.items.base
+package org.agent.hexvoid.items
 
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.item.IotaHolderItem
 import at.petrak.hexcasting.api.utils.asTranslatedComponent
 import at.petrak.hexcasting.api.utils.getCompound
 import at.petrak.hexcasting.api.utils.getList
-import at.petrak.hexcasting.api.utils.getString
 import at.petrak.hexcasting.api.utils.putCompound
 import net.minecraft.core.NonNullList
 import net.minecraft.nbt.CompoundTag
@@ -19,8 +18,11 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import org.agent.hexvoid.Hexvoid
 import org.agent.hexvoid.blocks.portal_mapper.PortalMapperItemState
+import org.agent.hexvoid.items.base.ItemPredicateProvider
+import org.agent.hexvoid.items.base.ModelPredicateEntry
 import org.agent.hexvoid.utils.asItemPredicate
 import org.agent.hexvoid.utils.styledHoverName
+import kotlin.collections.plusAssign
 
 class PortalMapperBlockItem(block: Block, properties: Properties) :
     BlockItem(block, properties), IotaHolderItem, ItemPredicateProvider

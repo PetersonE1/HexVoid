@@ -42,7 +42,7 @@ object OpActivatePortal : SpellAction {
         val blockEntity = PortalMapperBlock.getBlockEntity(env.world, target) ?: throw MishapInternalException(IllegalStateException("Block entity not found!"))
         val iota = blockEntity.readIota(env.world)
         if (iota == null)
-            throw MishapBadBlock(target, "error.hexvoid.missing_iota".asTranslatedComponent)
+            throw MishapBadBlock(target, "error.hexvoid.missing_iota".asTranslatedComponent) // todo: custom mishap type
         if (iota !is RealityScentIota && iota !is NullIota)
             throw MishapInvalidIota(iota, -1, "error.hexvoid.invalid_iota".asTranslatedComponent)
 
@@ -62,7 +62,7 @@ object OpActivatePortal : SpellAction {
         return SpellAction.Result(
             Spell(state, duration, target),
             baseCost + durationCost,
-            listOf(ParticleSpray.Companion.burst(target.center, 1.0))
+            listOf(ParticleSpray.burst(target.center, 1.0))
         )
     }
 

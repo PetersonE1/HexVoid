@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "hexvoid:block/crystal/sheen",
+    "particle": "hexvoid:block/crystal/sheen"
+  }
+}
