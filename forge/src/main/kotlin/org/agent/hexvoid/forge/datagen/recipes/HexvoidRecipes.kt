@@ -93,18 +93,24 @@ class HexvoidRecipes(out: PackOutput, modid: String) : PaucalRecipeProvider(out,
             HexvoidBlocks.CRYSTAL.block.defaultBlockState().setValue(CrystalBlock.SHEEN, false),
             MediaConstants.DUST_UNIT
         )
+            .unlockedBy("enlightenment", enlightenment)
+            .save(recipes, modLoc("dullify_crystal"))
 
         DestabilizeRecipeBuilder(
             StateIngredientHelper.of(Blocks.QUARTZ_BLOCK),
             HexvoidBlocks.LIQUID_QUARTZ_BLOCK.value.defaultBlockState(),
             MediaConstants.CRYSTAL_UNIT
         )
+            .unlockedBy("enlightenment", enlightenment)
+            .save(recipes, modLoc("quartz_block_to_liquid"))
 
         DestabilizeRecipeBuilder(
             StateIngredientHelper.of(Blocks.SMOOTH_QUARTZ),
             HexvoidBlocks.LIQUID_QUARTZ_BLOCK.value.defaultBlockState(),
             MediaConstants.CRYSTAL_UNIT
         )
+            .unlockedBy("enlightenment", enlightenment)
+            .save(recipes, modLoc("smooth_quartz_to_liquid"))
     }
 
 }

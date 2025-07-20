@@ -1,0 +1,14 @@
+{
+  "type": "hexvoid:destabilize",
+  "blockIn": {
+    "type": "block",
+    "block": "hexvoid:crystal"
+  },
+  "cost": 10000,
+  "result": {
+    "name": "hexvoid:crystal",
+    "properties": {
+      "sheen": "false"
+    }
+  }
+}

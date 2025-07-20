@@ -1,0 +1,14 @@
+{
+  "type": "hexvoid:destabilize",
+  "blockIn": {
+    "type": "block",
+    "block": "minecraft:quartz_block"
+  },
+  "cost": 100000,
+  "result": {
+    "name": "hexvoid:liquid_quartz",
+    "properties": {
+      "level": "0"
+    }
+  }
+}
