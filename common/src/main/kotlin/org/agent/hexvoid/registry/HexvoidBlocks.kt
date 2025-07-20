@@ -6,6 +6,7 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.GlassBlock
 import net.minecraft.world.level.block.RotatedPillarBlock
 import net.minecraft.world.level.material.PushReaction
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
@@ -74,12 +75,12 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
 
     @JvmField
     val CRYSTAL_SHEEN = blockItem("crystal_sheen", HexvoidItems.props) {
-        Block(BlockProperties.copy(Blocks.AMETHYST_BLOCK))
+        GlassBlock(BlockProperties.copy(Blocks.AMETHYST_BLOCK).noOcclusion())
     }
 
     @JvmField
     val CRYSTAL_DULL = blockItem("crystal_dull", HexvoidItems.props) {
-        Block(BlockProperties.copy(Blocks.AMETHYST_BLOCK))
+        GlassBlock(BlockProperties.copy(Blocks.AMETHYST_BLOCK).noOcclusion())
     }
 
     private fun BlockProperties.noPush() = pushReaction(PushReaction.BLOCK)
