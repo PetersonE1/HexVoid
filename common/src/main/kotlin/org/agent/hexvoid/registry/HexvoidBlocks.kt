@@ -7,7 +7,10 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.GlassBlock
+import net.minecraft.world.level.block.LeavesBlock
 import net.minecraft.world.level.block.RotatedPillarBlock
+import net.minecraft.world.level.block.SaplingBlock
+import net.minecraft.world.level.block.grower.OakTreeGrower
 import net.minecraft.world.level.material.PushReaction
 import org.agent.hexvoid.blocks.debug_portal.DebugPortalBlock
 import org.agent.hexvoid.blocks.fluids.liquid_quartz.LiquidQuartzBlock
@@ -69,8 +72,23 @@ object HexvoidBlocks : HexvoidRegistrar<Block>(Registries.BLOCK, { BuiltInRegist
     val LIQUID_QUARTZ_BLOCK = register("liquid_quartz") { LiquidQuartzBlock.INSTANCE }
 
     @JvmField
-    val CARNIVOROUS_LOG = blockItem("carnivorous_log", HexvoidItems.props) {
-        RotatedPillarBlock(BlockProperties.copy(Blocks.OAK_LOG))
+    val CARNIVOROUS_WOOD = blockItem("carnivorous_wood", HexvoidItems.props) {
+        RotatedPillarBlock(BlockProperties.copy(Blocks.OAK_WOOD))
+    }
+
+    @JvmField
+    val CARNIVOROUS_CORE = blockItem("carnivorous_core", HexvoidItems.props) {
+        Block(BlockProperties.copy(Blocks.OAK_PLANKS))
+    }
+
+    @JvmField
+    val CARNIVOROUS_LEAVES = blockItem("carnivorous_leaves", HexvoidItems.props) {
+        LeavesBlock(BlockProperties.copy(Blocks.OAK_LEAVES))
+    }
+
+    @JvmField
+    val CARNIVOROUS_SAPLING = blockItem("carnivorous_sapling", HexvoidItems.props) {
+        SaplingBlock(OakTreeGrower(), BlockProperties.copy(Blocks.OAK_SAPLING)) // todo: make a tree grower
     }
 
     @JvmField

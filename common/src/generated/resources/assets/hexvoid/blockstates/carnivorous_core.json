@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hexvoid:block/carnivorous_core"
+      },
+      {
+        "model": "hexvoid:block/carnivorous_core",
+        "y": 90
+      },
+      {
+        "model": "hexvoid:block/carnivorous_core",
+        "y": 180
+      },
+      {
+        "model": "hexvoid:block/carnivorous_core",
+        "y": 270
+      }
+    ]
+  }
+}

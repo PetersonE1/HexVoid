@@ -31,5 +31,10 @@ object FabricHexvoidClient : ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(
             RenderType.translucent(),
             HexvoidBlocks.CRYSTAL_SHEEN.value, HexvoidBlocks.CRYSTAL_DULL.value)
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderType.cutout(),
+            HexvoidBlocks.CARNIVOROUS_SAPLING.value
+        )
     }
 }
