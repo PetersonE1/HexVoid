@@ -19,7 +19,7 @@ class HexvoidBlockTagProvider(packOut: PackOutput, lookupProvider: CompletableFu
             HexvoidBlocks.PORTAL_MAPPER_EMPTY.block, HexvoidBlocks.PORTAL_MAPPER_CARTOGRAPHER.block,
             HexvoidBlocks.PORTAL_MAPPER_SNIFFER.block, HexvoidBlocks.PORTAL_MAPPER_FULL.block)
         add(tag(BlockTags.MINEABLE_WITH_AXE),
-            HexvoidBlocks.CARNIVOROUS_LOG.block)
+            HexvoidBlocks.CARNIVOROUS_WOOD.block, HexvoidBlocks.CARNIVOROUS_CORE.block)
     }
 
     fun add(appender: TagAppender<Block>, vararg blocks: Block) {

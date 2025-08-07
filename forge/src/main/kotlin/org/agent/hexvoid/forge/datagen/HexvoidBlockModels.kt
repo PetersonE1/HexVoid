@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.RotatedPillarBlock
+import net.minecraft.world.level.block.SaplingBlock
 import net.minecraftforge.client.model.generators.BlockModelBuilder
 import net.minecraftforge.client.model.generators.ModelFile
 import net.minecraftforge.common.data.ExistingFileHelper
@@ -29,9 +30,11 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_SNIFFER)
         portalBlockAndItem(HexvoidBlocks.PORTAL_MAPPER_FULL)
         easyBlockAndItem(HexvoidBlocks.QUARTZ_INFUSED_STONE, true)
-        easyAxisBlockAndItem(HexvoidBlocks.CARNIVOROUS_LOG)
+        easyAxisBlockAndItem(HexvoidBlocks.CARNIVOROUS_WOOD)
+        easyBlockAndItem(HexvoidBlocks.CARNIVOROUS_CORE, true)
         easyBlockAndItem(HexvoidBlocks.CRYSTAL_SHEEN)
         easyBlockAndItem(HexvoidBlocks.CRYSTAL_DULL)
+        easyBlockAndItem(HexvoidBlocks.CARNIVOROUS_LEAVES)
     }
 
     private fun easyHorizontalBlockAndItem(entry: RegistrarEntry<Block>) {
@@ -93,6 +96,14 @@ class HexvoidBlockModels(output: PackOutput, efh: ExistingFileHelper) : PaucalBl
         val side = modLoc("block/${entry.id.path}/side")
         val end = modLoc("block/${entry.id.path}/end")
         axisBlockAndItem(block, side, end)
+    }
+
+    private fun easySaplingBlockAndItem(entry: RegistrarEntry<Block>) {
+        val name = entry.id.path
+        val texture = modLoc("block/${name}")
+        blockAndItem(entry, false) {
+            models().cross(name, texture)
+        }
     }
 
     private fun horizontalBlockAndItem(

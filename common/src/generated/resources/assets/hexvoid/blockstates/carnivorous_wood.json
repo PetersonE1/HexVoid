@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "hexvoid:block/carnivorous_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "hexvoid:block/carnivorous_wood"
+    },
+    "axis=z": {
+      "model": "hexvoid:block/carnivorous_wood_horizontal",
+      "x": 90
+    }
+  }
+}
